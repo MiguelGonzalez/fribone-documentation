@@ -1,3 +1,7 @@
 \chapter{INTRODUCCIÓN}
 
-Intro
+El Internet de las cosas (IoT) es un concepto que nació en el Instituto de Tecnología de Massachusetts (MIT) y es considerado la siguiente evolución de Internet. El propósito es sencillo, que todo esté conectado a Internet; electrodomésticos que se pueden controlar remotamente; vehículos que avisen al taller cuando surja un problema mecánico, etc.
+
+La previsión para el 2020 es de 24 mil millones de dispositivos conectados a Internet. Esta evolución en una Red de objetos intercomunicados permitirá recibir una ingente cantidad de información de todo lo que nos rodea e interactuar con el mundo físico.
+
+Todos estos nuevos conceptos han sido el detonante de este proyecto, intentar acercar nuestros frigoríficos a esta evolución en la tecnología. Para ello se ha desarrollado un componente, el cual se puede colocar en el frigorífico, para poder registrar los productos que compramos. Este componente se conecta a Internet para transmitir toda la información a un servidor permitiéndo su análisis; productos que disponemos en el frigorífico, estadísticas de consumo, cálcular listas de la compra, etc.
