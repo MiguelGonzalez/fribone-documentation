@@ -11,8 +11,13 @@
   \usepackage[hidelinks]{hyperref}
   \usepackage[tt]{titlepic}
   \usepackage{graphicx}
+  \graphicspath{ {./images/} }
 
   \usepackage[spanish]{babel}
+
+  \usepackage{float}
+  \usepackage{picins}
+
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   % Margen y tamaño de los títulos de capítulo
@@ -62,7 +67,15 @@
   \renewcommand\thesection{\arabic{section}}
   \renewcommand\thesubsection{\thesection.\arabic{subsection}}
 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % Interlileado
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \renewcommand{\baselinestretch}{1.2}
 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % Se define la distancia entre párrafos como el doble de la distancia entre líneas
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \setlength{\parskip}{\baselineskip}
 
 \begin{document}
 
