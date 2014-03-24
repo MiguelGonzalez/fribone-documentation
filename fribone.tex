@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt,oneside]{book}
+\documentclass[a4paper,12pt,oneside]{report}
 
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
@@ -21,10 +21,20 @@
   \usepackage{pdfpages}
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % Margen y tamaño de los títulos de capítulo
+  % Cabecera de los capítulos
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \titlespacing*{\chapter}{40pt}{0pt}{18pt}
-  \titleformat{\chapter}[display]{\normalfont\bfseries}{\chaptertitlename\ \thechapter}{24pt}{\large}
+  \makeatletter
+    \def\@makechapterhead#1{%
+      \hspace{0pt}%
+      \vspace*{0\p@}%
+      {\parindent \z@ \raggedright \normalfont
+        \interlinepenalty\@M
+        \hrule
+        \Large\bfseries \thechapter.\quad #1\par\nobreak
+        \vskip 10\p@
+        \hrule
+      }}
+  \makeatother
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   % Header superior derecha
@@ -48,24 +58,10 @@
      \vspace*{\stretch{3}}
   }
 
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % Chapter quote at the start of chapter        %
-  % Source: http://tex.stackexchange.com/a/53380 %
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \makeatletter
-  \renewcommand{\@chapapp}{}% Not necessary...
-  \newenvironment{chapquote}[2][2em]
-    {\setlength{\@tempdima}{#1}%
-     \def\chapquote@author{#2}%
-     \parshape 1 \@tempdima \dimexpr\textwidth-2\@tempdima\relax%
-     \itshape}
-    {\par\normalfont\hfill--\ \chapquote@author\hspace*{\@tempdima}\par\bigskip}
-  \makeatother
-
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   % Enumeraciones de las secciones y subsecciones
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \renewcommand\thesection{\arabic{section}}
+  \renewcommand\thesection{\arabic{chapter}.\arabic{section}}
   \renewcommand\thesubsection{\thesection.\arabic{subsection}}
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -132,6 +128,14 @@ and encouragement.
 \input{introduccion/fribone-introduccion}
 
 \input{cuestion/fribone-estado-cuestion}
+
+\input{requisitos/fribone-requisitos}
+
+\input{arquitectura/fribone-arquitectura}
+
+\input{conclusiones/fribone-conclusiones}
+
+\input{lineas-futuras/fribone-lineas-futuras}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliografía
