@@ -29,8 +29,19 @@
       \vspace*{0\p@}%
       {\parindent \z@ \raggedright \normalfont
         \interlinepenalty\@M
-        \hrule
         \Large\bfseries \thechapter.\quad #1\par\nobreak
+        \vskip 10\p@
+        \hrule
+      }}
+  \makeatother
+
+  \makeatletter
+    \def\@makeschapterhead#1{%
+      \hspace{0pt}%
+      \vspace*{0\p@}%
+      {\parindent \z@ \raggedright \normalfont
+        \interlinepenalty\@M
+        \Large\bfseries #1\par\nobreak
         \vskip 10\p@
         \hrule
       }}
@@ -46,6 +57,7 @@
     \chapter*{\bibname}\@mkboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}}{%
     \chapter{BIBLIOGRAFÍA}}{}{}
   \makeatother
+
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   % Header superior derecha
