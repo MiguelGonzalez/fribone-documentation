@@ -37,6 +37,17 @@
   \makeatother
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % Bibliografía como capítulo numerado
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \usepackage{etoolbox}
+  \makeatletter
+    \patchcmd{\thebibliography}{%
+    \chapter*{\bibname}\@mkboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}}{%
+    \chapter{BIBLIOGRAFÍA}}{}{}
+  \makeatother
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   % Header superior derecha
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \pagestyle{fancyplain}
@@ -141,8 +152,10 @@ and encouragement.
 % Bibliografía
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+
 \nocite{*}
-\bibliography{bibliografia/fribone-bibliografia}{}
 \bibliographystyle{plain}
+\bibliography{bibliografia/fribone-bibliografia}{}
 
 \end{document}
