@@ -77,7 +77,11 @@ A continuación se muestra la tabla con los códigos que soporta el protocolo:
 
 Bajo la necesidad de mejorar la limitada capacidad del protocolo \emph{X10} surgió \emph{CEBus}. El estándar \emph{CEBus} se desarrolló por la EIA (Electronic Industries Allianza) y su primera especificación salió en 1992.
 
-\emph{CEBus}, a diferencia de \emph{X10}, se comunica sobre varias tecnologías; cableado eléctrico; cable coaxial; infrarrojos; radio frecuencia y cable óptico.
+\emph{CEBus}, a diferencia de \emph{X10}, se comunica sobre varias tecnologías; cableado eléctrico; cable coaxial; infrarrojos; radio frecuencia y cable óptico. Y además, se prescinde de un controlador central distribuyéndose la inteligencia entre todos los componentes del sistema.
+
+Para la comunicación entre distintos medios físicos se necesita utilizar un router intermedio. La información se transmite en forma de mensajes a través de una dirección broadcast o una específica al dispositivo receptor (cada aparato \emph{CEBus} tiene una dirección única asignada).
+
+Por último, se definió un lenguaje orientado a objetos para el control de los dipositivos \emph{CEBus} llamado \emph{CAL} (Common Appliance Language).
 
 \subsection{EIB}
 
