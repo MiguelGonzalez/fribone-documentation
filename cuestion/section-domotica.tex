@@ -30,48 +30,7 @@ Utiliza el cableado eléctrico como medio de comunicación que, debido a la limi
 
 Las señales de control de X10 se basan en la transmisión de ráfagas de pulsos de \emph{RF} (120 kHz) que representan información digital. Estos pulsos se sincronizan en el cruce por cero de la señal de red (50 Hz ó 60 Hz). Con la presencia de un pulso en un semiciclo y la ausencia del mismo en el semiciclo siguiente se representa un '1' lógico y a la inversa se representa un '0'. A su vez, cada orden se transmite 2 veces, con lo cual toda la información transmitida tiene cuádruple redundancia. Cada orden involucra 11 ciclos de red (220 ms para 50 Hz y 183,33, para 60Hz).
 
-Primero se transmite una orden con el Código de Casa y el Número de Módulo que direccionan el módulo en cuestión. Luego se transmite otro orden con el código de función a realizar (Function Code).
-
-A continuación se muestra la tabla con los códigos que soporta el protocolo:
-
-\begin{table}[!hbt]
-    \begin{center}
-        \begin{tabular}{|l |l | c | c |}
-            \hline
-            Código & Función & Unidireccional & Bidireccional \\
-            \hline
-            0 0 0 0 & All units off & X &  \\
-            \hline
-            0 0 0 1 & All lights on & X &  \\
-            \hline
-            0 1 1 0 & All lights off & X &  \\
-            \hline
-            0 0 1 0 & On & X &  \\
-            \hline
-            0 0 1 1 & Off & X &  \\
-            \hline
-            0 1 0 0 & Dim & X &  \\
-            \hline
-            0 1 0 1 & Bright & X &  \\
-            \hline
-            0 1 1 1 & Extended code & & X \\
-            \hline
-            1 0 0 0 & Hail request & & X \\
-            \hline
-            1 0 0 1 & Hail acknowledge & & X \\
-            \hline
-            1 0 1 0 & Pre-set dim & & X \\
-            \hline
-            1 1 0 1 & Status is on & & X \\
-            \hline
-            1 1 1 0 & Status is off & & X \\
-            \hline
-            1 1 1 1 & Status request & & X \\
-            \hline
-        \end{tabular}
-        \caption{Listado de comandos \emph{X10}}
-    \end{center}
-\end{table}
+Primero se transmite una orden con el Código de Casa y el Número de Módulo que direccionan el módulo en cuestión. Luego se transmite otro orden con el código de función a realizar (Function Code): Apagar/Encender todas las unidades, apagar/encender una unidad, comprobar el estado de una o varias unidades...
 
 \subsection{CEBus}
 
