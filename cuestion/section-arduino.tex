@@ -48,4 +48,58 @@ A continuación se muestra un código sencillo para hacer parpadear un diodo led
 
 \subsection{Arduino Yún}
 
+Existen una gran variedad de placas Arduino, tanto oficiales como no oficiales; Arduino uno, Arduino Mega, Arduino Leonardo... Y una de las más recientes, la cual usaré en este proyecto, es la placa \emph{Arduino Yún}.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[keepaspectratio,width=0.6\textwidth]{arduino_yun_front.eps}
+    \label{fig:arduino-ide}
+\end{figure}
+
+La ventaja principal, y por la que me he decantado por comprar esta placa, es la combinación de Arduino (\emph{ATmega 32U4}) con un sistema operativo Linux (\emph{AR9331}) con conectividad Wi-Fi. Esto permite utilizar todo el potencial de Arduino en el desarrollo de nuestro hardware y obtener todo el potencial de una máquina Linux, a través del sistema operativo \emph{Linino}, para ejecutar comandos, scripts, aplicaciones y cualquier cosa que se nos ocurra.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[keepaspectratio,width=0.6\textwidth]{arduino_parts.eps}
+    \label{fig:arduino-ide}
+\end{figure}
+
+La comunicación entre Arduino y Linux se realiza a través de la librería \emph{Bridge}, facilitando la comunicación entre los dos procesadores. La librería da la habilidad a Arduino y correr scripts, comunicarse con interfaces de red y recibir información del procesador \emph{AR9331}. El Host USB, las interfaces de red y el lector de tarjetas de memoria están conectados al procesador \emph{AR9331} manejado por Linux, la librería Bridge también permite a Arduino acceder a estos periferios.
+
+Las características de \emph{Arduino Yún} son las siguientes:
+
+\textbf{AVR Arduino microcontroller}
+
+\begin{tabular}{| l | l |}
+\hline
+Microcontroller & ATmega32u4 \\ \hline
+Operating Voltage & 5V \\ \hline
+Input Voltage & 5V \\ \hline
+Digital I/O Pins & 20 \\ \hline
+PWM Channels & 7 \\ \hline
+Analog Input Channels & 12 \\ \hline
+DC Current per I/O Pin & 40 mA \\ \hline
+DC Current for 3.3V Pin & 50 mA \\ \hline
+Flash Memory & 32 KB (of which 4 KB used by bootloader) \\ \hline
+SRAM & 2.5 KB \\ \hline
+EEPROM & 1 KB \\ \hline
+Clock Speed & 16 MHz \\ \hline
+\end{tabular}
+
+\textbf{Linux microprocessor}
+
+\begin{tabular}{| l | l |}
+\hline
+Processor & Atheros AR9331 \\ \hline
+Architecture & MIPS @400MHz \\ \hline
+Operating Voltage & 3.3V \\ \hline
+Ethernet & IEEE 802.3 10/100Mbit/s \\ \hline
+WiFi & IEEE 802.11b/g/n \\ \hline
+USB Type-A & 2.0 Host/Device \\ \hline
+Card Reader & Micro-SD only \\ \hline
+RAM & 64 MB DDR2 \\ \hline
+Flash Memory & 16 MB \\ \hline
+\end{tabular}
+
+
 \subsection{Pantalla TFT}
