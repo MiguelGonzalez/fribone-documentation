@@ -120,3 +120,58 @@ Uno de los componentes para dotar de comunicación a nuestra placa Arduino es ut
 
 Es una pantalla de 1,77" de diagonal, con 160x128 pixels de resolución, y con un lector de tarjetas SD para cargar imágenes. La pantalla está pensada para encajar con las placas \emph{Arduino Esplora} ó \emph{Arduino Robot}, con el resto de placas Arduino se pueden realizar las conexiones a mano.
 
+A través de la librería \emph{TFT} podemos dibujar elementos en la pantalla o, mediante una memoria SD, cargar imagenes desde la tarjeta en la pantalla. A continuación expongo una manera para dibujar un círculo y un cuadrado en la pantalla:
+
+\begin{lstlisting}
+    ...
+
+    void setup() {
+      TFTscreen.begin();
+      TFTscreen.background(255, 255, 255);
+
+    }
+
+    void loop() {
+      TFTscreen.stroke(0,0,0);
+      TFTscreen.fill(127,127,127);
+      TFTscreen.circle(TFTscreen.width()/2, TFTscreen.height()/2, 30);
+
+      TFTscreen.fill(50,40,30);
+      TFTscreen.rect(TFTscreen.width()/2, TFTscreen.height()/2, 30, 30);
+
+      delay(1500);
+    }
+\end{lstlisting}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[keepaspectratio,width=0.4\textwidth]{tft_circulo_cuadrado.eps}
+    \label{fig:arduino-ide}
+\end{figure}
+
+En cambio, para cargar una imagen y pintarla en la pantalla TFT tenemos que esperar a que la memoria SD esté inicializada y procedemos a cargar y dibujar la imagen:
+
+\begin{lstlisting}
+    ...
+
+    void setup() {
+      TFTscreen.begin();
+      TFTscreen.background(255, 255, 255);
+
+      if (!SD.begin(sd_cs)) {
+        return; // Error SD
+      }
+    }
+
+    void loop() {
+      logo = TFTscreen.loadImage("f1.bmp");
+      TFTscreen.image(logo, 0, 0);
+      delay(1500);
+    }
+\end{lstlisting}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[keepaspectratio,width=0.4\textwidth]{tft_f1.eps}
+    \label{fig:arduino-ide}
+\end{figure}
