@@ -1,3 +1,13 @@
 \section{Componente hardware}
 
-Sección componente hardware
+Como se observa en el diagrama general del sistema el componente hardware se encarga de registrar los productos que se introducen o se sacan del frigorífico, comunicándose con el servidor para registrar la información.
+
+Para esta tarea este componente se compone de las siguientes tres partes:
+
+\begin{itemize}
+    \item \textbf{Lector de código de barras}: Permite identificar los productos que se quieren introducir o sacar del frigorífico.
+    \item \textbf{Pantalla TFT}: Permite controlar las distintas opciones del componente hardware.
+    \item \textbf{Comunicación WiFi}: Permite la comunicación con el servidor.
+\end{itemize}
+
+El hardware se ha desarrollado gracias a \emph{Arduino Yún} y se ha programado en Python (\emph{AR9331} bajo Linino) y Wiring (\emph{ATmega 32U4}), realizando la comunicación entre los dos procesadores a través de la librería \emph{Bridge}.
