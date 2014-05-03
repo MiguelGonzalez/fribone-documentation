@@ -1,3 +1,14 @@
 \section{Componente servidor}
 
-Sección componente servidor
+El servidor es la pieza central de toda la arquitectura del proyecto, es el nexo común entre todas las interfaces del proyecto.
+
+La comunicación entre las distintas interfaces se realiza a través de una API \emph{RESTful} que se caracteriza por:
+
+\begin{itemize}
+    \item Está basada en URIs, por ej: \url{http://example.com/resources}.
+    \item Tipos de datos de Internet como \emph{JSON}.
+    \item Métodos estándar HTTP: \emph{GET}, \emph{POST}, \emph{PUT} ó \emph{DELETE}.
+    \item Uso de hipermedios
+\end{itemize}
+
+El lenguaje utilizado para el desarrollo del servidor es \emph{PHP} debido a que en practicamente la totalidad de los servidores de viene por defecto. Mientras que el empleo de otros lenguajes de servidor, obligaría a contratar un servidor dedicado para poder realizar la instalación del mismo, aumentando los costes y la complejidad del proyecto.
