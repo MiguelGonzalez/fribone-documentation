@@ -141,3 +141,92 @@ opkg install kmod-usb-hid
 	\end{lstlisting}
 
 Y nos funcionará el lector de códigos de barras USB sin ningún problema, aunque se desenchufe y se vuelva a enchufar.
+
+\subsection{Decodificando el lector de código de barras}
+
+El siguiente problema a resolver es la creación de un script en python que permita la lectura de códigos de barras. Para ello se ha tenido que decodificar los caracteres que envía al sistema operativo, y una vez hecho, comprender como funciona.
+
+El funcionamiento es muy sencillo. Cuando el lector de código de barras encuentra un código válido lo envía al sistema por letras y por último, y es lo que nos ayuda a comprender que ha terminado de enviarnos el código de barras, nos envía dos caracteres seguidos (\emph{Control + j}) que simbolizan el salto de línea (\emph{Line Feed}).
+
+El siguiente script nos permite, una vez conectado el código de barras, leer los eventos y mostrar por pantalla los códigos capturados:
+
+\begin{lstlisting}
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+import struct
+import time
+import sys
+sys.path.insert(0, '/usr/lib/python2.7/bridge/')
+
+from bridgeclient import BridgeClient as bridgeclient
+
+# Funciones
+
+def esTeclaNumerica(value):
+    return value >= 458782 and value <= 458791
+
+def getNumero(value):
+    return (value - 458781)%10
+
+def esTeclaLetra(value):
+    return (value >= 458756 and value <= 458781)
+
+def getLetra(value):
+    posicionValue = value - 458756
+    asciiValue = posicionValue + 65
+    return str(unichr(asciiValue))
+
+# 458792 -> Intro
+# 458976 + 458765 (Control + j => Line Feed)
+def esTeclaControl(value):
+    return value == 458792 or \
+            value == 458976 or \
+            value == 458765
+
+# Inicio programa
+
+infile_path = "/dev/input/event1"
+
+#long int, long int, unsigned short, unsigned short, unsigned int
+FORMAT = 'llHHI'
+EVENT_SIZE = struct.calcsize(FORMAT)
+
+#open file in binary mode
+in_file = open(infile_path, "rb")
+
+event = in_file.read(EVENT_SIZE)
+
+teclasPulsadas = dict()
+escribiendoLetras = False
+codigoBarras = ''
+bridgeCliente = bridgeclient()
+
+while event:
+    (tv_sec, tv_usec, type, code, value) = struct.unpack(FORMAT, event)
+
+    # Importa este orden de la condici|ó|n, si se altera puede imprimir
+    # car|á|cteres escritos muy deprisa en otro orden
+    if value not in teclasPulsadas:
+        teclasPulsadas[value] = 'S'
+    else:
+        if esTeclaControl(value) and escribiendoLetras:
+            escribiendoLetras = False
+            # print codigoBarras
+
+            bridgeCliente.put('codebar', codigoBarras)
+
+            codigoBarras = ''
+        elif not esTeclaControl(value) and \
+                (esTeclaNumerica(value) or \
+                esTeclaLetra(value)):
+            escribiendoLetras = True
+            if esTeclaNumerica(value):
+                codigoBarras += str(getNumero(value))
+            elif esTeclaLetra(value):
+                codigoBarras += getTeclaLetra(value)
+        del teclasPulsadas[value]
+
+    event = in_file.read(EVENT_SIZE)
+in_file.close()
+\end{lstlisting}
