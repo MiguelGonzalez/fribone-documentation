@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt,oneside]{report}
+\documentclass[a4paper,11pt,oneside]{report}
 
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
@@ -44,9 +44,9 @@
     backgroundcolor=\color{gray97},
     rulesepcolor=\color{black},
     %
-    stringstyle=\ttfamily,
+    stringstyle=\small,
     showstringspaces = false,
-    basicstyle=\small\ttfamily,
+    basicstyle=\tiny\small\ttfamily,
     commentstyle=\color{gray45},
     keywordstyle=\bfseries,
     %
@@ -55,6 +55,7 @@
     numberstyle=\tiny,
     numberfirstline = false,
     breaklines=true,
+    escapeinside=||,
   }
   \lstnewenvironment{listing}[1][]
   {\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
