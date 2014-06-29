@@ -63,7 +63,7 @@ Con la disposición de un servidor LAMP en funcionamiento tenemos que realizar l
 
 			Una vez instalado es necesario crear una base de datos con codificación \emph{utf8\_general\_ci}, y para dar mayor seguridad, crear un usuario específico con permisos para acceder a esa base de datos.
 
-			Despues de crear la base de datos es necesario ejecutar el script sql de instalación que se encargará de crear las tablas necesarias, así como inserción de datos, para que la aplicación sea capaz de funcionar.
+			Una vez creada la base de datos es necesario ejecutar el script sql de instalación que se encargará de crear las tablas necesarias, así como inserción de datos, para que la aplicación sea capaz de funcionar.
 
 		\item PHP
 
@@ -86,7 +86,7 @@ Con la disposición de un servidor LAMP en funcionamiento tenemos que realizar l
 
 	\end{itemize}
 
-\subsection{Control de Versiones, tests unitarios e integración contínua}
+\subsection{Control de Versiones, tests unitarios e integración continua}
 
 Desde el inicio del proyecto se ha desarrollado utilizando \emph{GIT} como control de versiones, utilizando la plataforma web \emph{GitHub}, una forja que sirve para alojar proyectos de forma pública y de manera gratuita, aunque se puede crearse una cuenta de pago para tener repositorios privados.
 
@@ -124,14 +124,14 @@ if (defined('ENVIRONMENT') && ENVIRONMENT == 'testing') {
 
 	\item Modificación del fichero Utf8.php
 
-		Se ha modificado la línea donde se declara la variable global \emph{\$CFG} por el siguiente código para avitar un error al lanzarse los tests:
+		Se ha modificado la línea donde se declara la variable global \emph{\$CFG} por el siguiente código para evitar un error al lanzarse los tests:
 
 				\begin{lstlisting}
 //global $CFG; // Fix PhpUnit Error
 $CFG =& load_class('Config', 'core');
 				\end{lstlisting}
 
-	\item Modificado fichero \emph{mysql\_driver.php} para avitar un error al utilizar la función \emph{mysql\_escape\_string}:
+	\item Modificado fichero \emph{mysql\_driver.php} para evitar un error al utilizar la función \emph{mysql\_escape\_string}:
 
 				\begin{lstlisting}
 function escape_str($str, $like = FALSE) {
