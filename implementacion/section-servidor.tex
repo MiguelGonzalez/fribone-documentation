@@ -1,0 +1,222 @@
+\section{COMPONENTE SERVIDOR}
+
+El componente servidor se ha implementado utilizando el lenguaje PHP (\emph{Hypertext Preprocessor}). Se ha utilizado este lenguaje de programación debido a que es uno de los lenguajes de desarrollo web más utilizados, por lo que ha sido elegido ya que cuenta con las siguientes ventajas:
+
+	\begin{itemize}
+		\item Gran soporte por las empresas de servicios web
+		\item Una comunidad de desarrolladores muy activa
+		\item Amplia documentación y una comunidad activa y colaboradora
+		\item Multitud de librerías y frameworks
+	\end{itemize}
+
+Como base de desarrollo se ha utilizado el framework \emph{CodeIgniter}, una potente herramienta de desarrollo que permite realizar aplicaciones de manera sencilla y rápidamente. Algunas de las características que posee son:
+
+	\begin{itemize}
+		\item Posee un gran rendimiento
+		\item Tiene una alta compatibilidad entre distintas versiones y configuraciones de servidores PHP
+		\item No necesita una gran configuración para empezar a funcionar
+		\item Evita introducirse en una gran complejidad de desarrollo
+		\item Tiene una gran documentación
+	\end{itemize}
+
+\subsection{Configurando el sistema}
+
+El programa necesita funcionar bajo un servidor LAMP (\emph{Linux, Apache, MySQL, PHP}):
+
+	\begin{itemize}
+		\item Linux: Es el término cotidiano de nombrar al Sistema Operativo \emph{GNU/Linux}, es muy ligero y es capaz de ejecutarse sobre multitud de dispositivos; ordenadores; móviles; teléfonos; routers, etc. Una de sus aplicaciones es la de ejercer de Servidor Web. 
+		\item Apache: Es un servidor web HTTP de código abierto. Su objetivo es proveer seguridad, eficiencia y un servidor extensible que provea servicios HTTP cumpliendo con los estándares HTTP.
+		\item MySQL: Es la base de datos más popular de código abierto
+		\item PHP: Es un lenguaje de scripting que se ejecuta desde el lado del servidor, diseñado para desarrollo web pero también usado como lenguaje de propósito general.
+	\end{itemize}
+
+Opcionalmente se puede configurar un servidor Windows para ejecutar la aplicación, aunque no es lo usual, ya que un servidor Windows se caracteriza por servir aplicaciones web desarrolladas bajo \emph{.NET}.
+
+Con la disposición de un servidor LAMP en funcionamiento tenemos que realizar las siguientes configuraciones para que la aplicación web sea capaz de servir páginas a los clientes:
+
+	\begin{itemize}
+		\item Apache:
+
+			Tendremos que configurar Apache para que sea capaz de servir nuestro sitio indicándole en que directorio se encuentra instalada, el nombre del servidor bajo el que se va a servir y algunas otras opciones opcionales. A continuación se pone el ejemplo de un fichero de configuración:
+
+				\begin{lstlisting}
+<VirtualHost *:80>
+    <Directory />
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride All
+        Order allow,deny
+        allow from all
+    </Directory>
+
+	ServerName fribone.es
+
+	ServerAdmin correo_administrador@gmail.com
+	DocumentRoot /var/www/fribone-php-server/application
+	LogLevel info
+
+	ErrorLog ${APACHE_LOG_DIR}/error.local.log
+	CustomLog ${APACHE_LOG_DIR}/access.local.log combined
+</VirtualHost>
+				\end{lstlisting} 
+
+		\item MySQL
+
+			Una vez instalado es necesario crear una base de datos con codificación \emph{utf8\_general\_ci}, y para dar mayor seguridad, crear un usuario específico con permisos para acceder a esa base de datos.
+
+			Despues de crear la base de datos es necesario ejecutar el script sql de instalación que se encargará de crear las tablas necesarias, así como inserción de datos, para que la aplicación sea capaz de funcionar.
+
+		\item PHP
+
+			Hay que encargarse de comprobar que se tiene habilitado el módulo \emph{mod\_rewrite}, es un modulo que a través del fichero \emph{.htaccess} permite a base de reglas reescribir la URL de una petición al vuelo. Es ampliamente utilizado para permitir poner urls amigables al cliente, siendo el módulo quien lo convierte a una url parametrizada que entiende el lenguaje.
+
+		\item Aplicación PHP
+
+			Hay que editar dos ficheros contenidos en la carpeta \emph{conf}.
+
+			\begin{itemize}
+				\item config.php
+
+				El parámetro más destacado que es de obligación cambiar es la \emph{encryption\_key}, clave que se utiliza para la encriptación de la sesión en una cookie que se envía al cliente (se utiliza para controlar que un usuario está logueado).
+
+				\item database.php
+
+				En este fichero de configuración hay que establecer los distintos parámetros de la configuración de nuestra base de datos, siendo los más importantes el nombre de usuario, la contraseña y el nombre de la base de datos.
+
+			\end{itemize}
+
+	\end{itemize}
+
+\subsection{Control de Versiones, tests unitarios e integración contínua}
+
+Desde el inicio del proyecto se ha desarrollado utilizando \emph{GIT} como control de versiones, utilizando la plataforma web \emph{GitHub}, una forja que sirve para alojar proyectos de forma pública y de manera gratuita, aunque se puede crearse una cuenta de pago para tener repositorios privados.
+
+Además, se han realizado tests unitarios utilizando para ello la herramienta \emph{PHPUnit}, lo cual nos permite tener una aplicación sólida y poco propensa a errores, ya que con cada modificación que se realiza se vuelven a pasar los tests para comprobar la estabilidad del código. Otra de las ventajas de realizar tests es que si se encuentra un error, solamente hay que escribir un test para ello y corregirlo, por lo que será imposible que el mismo error se vuelva a repetir en un futuro ya que estará cubierto bajo ese test.
+
+Y por último, por encima de estos dos pilares, se ha realizado integración continua con \emph{Travis CI}, una aplicación web que se sincroniza con la cuenta de \emph{GitHub}, construyendo la aplicación y realizando los tests unitarios cada vez que se realiza un \emph{push} al repositorio.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[keepaspectratio,width=0.9\textwidth]{travis-ci-tests.eps}
+    \caption{Tets - Travis CI}\label{fig:travis-ci-tests}
+\end{figure}
+
+\subsection{Problemáticas para la creación de tests unitarios}
+
+CodeIgniter viene con su propia herramienta para generar tests unitarios, la cual no nos permite su integración con \emph{Travis CI}, por ello hemos realizados una serie de modificaciones para permitir el uso de PHPUnit.
+
+Se han tenido que tocar los siguientes módulos y realizar los siguientes cambios:
+
+\begin{itemize}
+
+	\item Modificación del fichero \emph{DB\_driver.php}
+
+		Si se produce un error se llama al método display\_error, el cual lo imprime por pantalla. Para nuestros tests se ha modificado para lanzar una excepción en caso de que estemos en el entorno de testing.
+
+				\begin{lstlisting}
+if (defined('ENVIRONMENT') && ENVIRONMENT == 'testing') {
+	$message = $error . ' ' . $swap;
+	throw new Exception($message);
+} else {
+	...
+	...
+}
+				\end{lstlisting}
+
+	\item Modificación del fichero Utf8.php
+
+		Se ha modificado la línea donde se declara la variable global \emph{\$CFG} por el siguiente código para avitar un error al lanzarse los tests:
+
+				\begin{lstlisting}
+//global $CFG; // Fix PhpUnit Error
+$CFG =& load_class('Config', 'core');
+				\end{lstlisting}
+
+	\item Modificado fichero \emph{mysql\_driver.php} para avitar un error al utilizar la función \emph{mysql\_escape\_string}:
+
+				\begin{lstlisting}
+function escape_str($str, $like = FALSE) {
+		if (is_array($str)) {
+			foreach ($str as $key => $val) {
+				$str[$key] = $this->escape_str($val, $like); }
+
+	   		return $str;
+	   	}
+
+	   	$str = is_resource($this->conn_id) ? mysql_real_escape_string($str, $this->conn_id) : addslashes($str);
+
+		// escape LIKE condition wildcards
+		if ($like === TRUE) {
+			return str\_replace(
+				array($this->_like_escape_chr, '%', '_'),
+	      		array($this->_like_escape_chr.$this->_like_escape_chr,
+      				$this->_like_escape_chr.'%', $this->_like_escape_chr.'_'),
+	      		$str);
+		}
+
+		return $str;
+	}
+				\end{lstlisting}
+
+\end{itemize}
+
+Por último, para ser capaces de lanzar nuestros tests hemos tenido que añadir las siguientes configuraciones a nuestra aplicación:
+
+\begin{itemize}
+	\item Creación del fichero de configuración \emph{phpunit.xml}
+
+		Este fichero XML nos permite indicarle a PHPUnit los parámetros para ejecutar los tests. Consta de la siguiente configuración:
+
+				\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpunit bootstrap="application/application/tests/bootstrap.php"
+	colors="true"
+	convertErrorsToExceptions="true"
+	convertNoticesToExceptions="true"
+	convertWarningsToExceptions="true"
+	processIsolation="false"
+	stopOnFailure="false"
+	syntaxCheck="false"
+	verbose="true">
+	<testsuites>
+		<testsuite name="TestSuite">
+			<directory>application/tests</directory>
+		</testsuite>
+	</testsuites>
+	<php>
+		<const name="PHPUNIT_TEST" value="1" />
+		<const name="PHPUNIT_CHARSET" value="UTF-8" />
+		<const name="REMOTE_ADDR" value="217.0.0.1" />
+	</php>
+	<filter>
+		<blacklist>
+			<directory suffix=".php">system</directory>
+		</blacklist>
+	</filter>
+</phpunit>
+				\end{lstlisting}
+
+		Ejecutará nuestra aplicación a partir del fichero \emph{bootstrap.php} y lanzará los tests contenidos en la carpeta \emph{application/tests}.
+
+	\item Creación del fichero \emph{bootstrap.php}
+
+		Este fichero es una copia del \emph{index.php}, se ha modificado el entorno a testing, la dirección remota del servidor, el reporte de errores del sistema y el path de las carpetas:
+				\begin{lstlisting}
+define('ENVIRONMENT', 'testing');
+
+$_SERVER["REMOTE_ADDR"]     = array_key_exists( 'REMOTE_ADDR', $_SERVER) ? $_SERVER['REMOTE_ADDR'] : '127.0.0.1'; 
+
+error_reporting(E_ALL ^ E_NOTICE);
+$system_path = '../../system';
+$application_folder = '../../application';
+				\end{lstlisting}
+
+	\item En nuestra definición de controlador global se ha añadido una condición para comprobar si estamos en modo testing. En modo testing no se carga ninguna librería y se añade en su lugar la carpeta de \emph{tests/mockups} como paquete, de esta manera se cargarán en nuestros tests de ahí aquellas librerías mockups que se añadan.
+
+				\begin{lstlisting}
+if (defined('ENVIRONMENT') && ENVIRONMENT == 'testing') {
+    $this->load->add_package_path(APPPATH.'tests/mockups');
+} else {
+    $this->load->library('login_auth');
+}
+				\end{lstlisting}
+\end{itemize}
