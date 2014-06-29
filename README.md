@@ -6,7 +6,11 @@ http://www.gnu.org/licenses/gpl-2.0.html
 
 Objetivo
 =======================
-El objetivo del proyecto es resolver un problema muy común en el hogar, el control de los gastos a la hora de llenar el frigorífico debido a una mala gestión de las compras. Además, se obtienen otros beneficios como; control de una dieta sana y equilibrada, evitar el desperdicio de alimentos que no se consumen, listas automáticas de los productos a comprar, estadísticas en tiempo real, etc.
+Compañías como LG han presentado en los últimos años frigoríficos inteligentes; frigoríficos que se pueden controlar a través del móvil y permiten conocer los productos que hay en su interior a través de etiquetas inteligentes. 
+
+El objetivo del proyecto es traer parte de esta tecnología al sin tener que realizar una gran inversión. No será necesario cambiar de frigorífico, para ello se ha creado un componente gracias a Arduino que nos permitirá leer los productos que introduzcamos o consumamos del frigorifico.
+
+Existen aplicaciones que nos permiten llevar el gasto en el hogar, pero a diferencia de este proyecto, están pensadas para insertar un ticket de compra. Este proyecto permite escanear producto por producto, y gracias a una base de datos colaborativa, obtener el gasto total de la compra; distinguir por tipo de alimento... También podremos consultar nuestros hábitos de comidas, consultar que productos nos faltan y generar una lista de la compra, etc. 
 
 Esta solución se divide en tres bloques principales; un componente electrónico, un servidor centralizado en Internet y una aplicación cliente para consumir la información.
 
@@ -17,9 +21,13 @@ Esta solución se divide en tres bloques principales; un componente electrónico
 
     Para ello se contará con dos tipos de entrada de productos; a través del código de barras ó un lector RFID, y de una salida Wireless para comunicar al servidor la entrada de los productos.
 
+    https://github.com/MiguelGonzalez/fribone-arduino-yun
+
 * Servidor centralizado:
 
     Es la parte lógica del proyecto, el encargado de recibir la información del componente electrónico, almacenarla y operar con ella para ofrecer a las aplicaciones cliente acceso a toda la información.
+
+    https://github.com/MiguelGonzalez/fribone-php-server
 
 * Aplicación cliente:
 
@@ -36,3 +44,5 @@ Esta solución se divide en tres bloques principales; un componente electrónico
     * Identificación de productos; nombre, precio, imagen, etc.
     * Planes de compra; permitirá compartir planes de compra que pueden orientarse a distintos fines como el conseguir un ahorro económico.
     * Recetas; de esta manera se podrá consultar en base al stock que se dispone en el frigorífico que recetas de cocina se pueden preparar.
+
+    https://github.com/MiguelGonzalez/fribone-android-client
