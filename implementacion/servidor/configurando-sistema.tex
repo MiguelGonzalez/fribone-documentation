@@ -1,0 +1,66 @@
+\subsection{Configurando el sistema}
+
+El programa necesita funcionar bajo un servidor LAMP (\emph{Linux, Apache, MySQL, PHP}):
+
+    \begin{itemize}
+        \item Linux: Es el término cotidiano de nombrar al Sistema Operativo \emph{GNU/Linux}, es muy ligero y es capaz de ejecutarse sobre multitud de dispositivos; ordenadores; móviles; teléfonos; routers, etc. Una de sus aplicaciones es la de ejercer de Servidor Web.
+        \item Apache: Es un servidor web HTTP de código abierto. Su objetivo es proveer seguridad, eficiencia y un servidor extensible que provea servicios HTTP cumpliendo con los estándares HTTP.
+        \item MySQL: Es la base de datos más popular de código abierto
+        \item PHP: Es un lenguaje de scripting que se ejecuta desde el lado del servidor, diseñado para desarrollo web pero también usado como lenguaje de propósito general.
+    \end{itemize}
+
+Opcionalmente se puede configurar un servidor Windows para ejecutar la aplicación, aunque no es lo usual, ya que un servidor Windows se caracteriza por servir aplicaciones web desarrolladas bajo \emph{.NET}.
+
+Con la disposición de un servidor LAMP en funcionamiento tenemos que realizar las siguientes configuraciones para que la aplicación web sea capaz de servir páginas a los clientes:
+
+    \begin{itemize}
+        \item Apache:
+
+            Tendremos que configurar Apache para que sea capaz de servir nuestro sitio indicándole en que directorio se encuentra instalada, el nombre del servidor bajo el que se va a servir y algunas otras opciones opcionales. A continuación se pone el ejemplo de un fichero de configuración:
+
+                \begin{lstlisting}
+<VirtualHost *:80>
+    <Directory />
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride All
+        Order allow,deny
+        allow from all
+    </Directory>
+
+    ServerName fribone.es
+
+    ServerAdmin correo_administrador@gmail.com
+    DocumentRoot /var/www/fribone-php-server/application
+    LogLevel info
+
+    ErrorLog ${APACHE_LOG_DIR}/error.local.log
+    CustomLog ${APACHE_LOG_DIR}/access.local.log combined
+</VirtualHost>
+                \end{lstlisting}
+
+        \item MySQL
+
+            Una vez instalado es necesario crear una base de datos con codificación \emph{utf8\_general\_ci}, y para dar mayor seguridad, crear un usuario específico con permisos para acceder a esa base de datos.
+
+            Una vez creada la base de datos es necesario ejecutar el script sql de instalación que se encargará de crear las tablas necesarias, así como inserción de datos, para que la aplicación sea capaz de funcionar.
+
+        \item PHP
+
+            Hay que encargarse de comprobar que se tiene habilitado el módulo \emph{mod\_rewrite}, es un modulo que a través del fichero \emph{.htaccess} permite a base de reglas reescribir la URL de una petición al vuelo. Es ampliamente utilizado para permitir poner urls amigables al cliente, siendo el módulo quien lo convierte a una url parametrizada que entiende el lenguaje.
+
+        \item Aplicación PHP
+
+            Hay que editar dos ficheros contenidos en la carpeta \emph{conf}.
+
+            \begin{itemize}
+                \item config.php
+
+                El parámetro más destacado que es de obligación cambiar es la \emph{encryption\_key}, clave que se utiliza para la encriptación de la sesión en una cookie que se envía al cliente (se utiliza para controlar que un usuario está logueado).
+
+                \item database.php
+
+                En este fichero de configuración hay que establecer los distintos parámetros de la configuración de nuestra base de datos, siendo los más importantes el nombre de usuario, la contraseña y el nombre de la base de datos.
+
+            \end{itemize}
+
+    \end{itemize}

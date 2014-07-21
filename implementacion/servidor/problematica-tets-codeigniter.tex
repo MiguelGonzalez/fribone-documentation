@@ -1,0 +1,120 @@
+\subsection{Problemáticas para la creación de tests unitarios}
+
+CodeIgniter viene con su propia herramienta para generar tests unitarios, la cual no nos permite su integración con \emph{Travis CI}, por ello hemos realizados una serie de modificaciones para permitir el uso de PHPUnit.
+
+Se han tenido que tocar los siguientes módulos y realizar los siguientes cambios:
+
+\begin{itemize}
+
+    \item Modificación del fichero \emph{DB\_driver.php}
+
+        Si se produce un error se llama al método display\_error, el cual lo imprime por pantalla. Para nuestros tests se ha modificado para lanzar una excepción en caso de que estemos en el entorno de testing.
+
+                \begin{lstlisting}
+if (defined('ENVIRONMENT') && ENVIRONMENT == 'testing') {
+    $message = $error . ' ' . $swap;
+    throw new Exception($message);
+} else {
+    ...
+    ...
+}
+                \end{lstlisting}
+
+    \item Modificación del fichero Utf8.php
+
+        Se ha modificado la línea donde se declara la variable global \emph{\$CFG} por el siguiente código para evitar un error al lanzarse los tests:
+
+                \begin{lstlisting}
+//global $CFG; // Fix PhpUnit Error
+$CFG =& load_class('Config', 'core');
+                \end{lstlisting}
+
+    \item Modificado fichero \emph{mysql\_driver.php} para evitar un error al utilizar la función \emph{mysql\_escape\_string}:
+
+                \begin{lstlisting}
+function escape_str($str, $like = FALSE) {
+        if (is_array($str)) {
+            foreach ($str as $key => $val) {
+                $str[$key] = $this->escape_str($val, $like); }
+
+            return $str;
+        }
+
+        $str = is_resource($this->conn_id) ? mysql_real_escape_string($str, $this->conn_id) : addslashes($str);
+
+        // escape LIKE condition wildcards
+        if ($like === TRUE) {
+            return str\_replace(
+                array($this->_like_escape_chr, '%', '_'),
+                array($this->_like_escape_chr.$this->_like_escape_chr,
+                    $this->_like_escape_chr.'%', $this->_like_escape_chr.'_'),
+                $str);
+        }
+
+        return $str;
+    }
+                \end{lstlisting}
+
+\end{itemize}
+
+Por último, para ser capaces de lanzar nuestros tests hemos tenido que añadir las siguientes configuraciones a nuestra aplicación:
+
+\begin{itemize}
+    \item Creación del fichero de configuración \emph{phpunit.xml}
+
+        Este fichero XML nos permite indicarle a PHPUnit los parámetros para ejecutar los tests. Consta de la siguiente configuración:
+
+                \begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpunit bootstrap="application/application/tests/bootstrap.php"
+    colors="true"
+    convertErrorsToExceptions="true"
+    convertNoticesToExceptions="true"
+    convertWarningsToExceptions="true"
+    processIsolation="false"
+    stopOnFailure="false"
+    syntaxCheck="false"
+    verbose="true">
+    <testsuites>
+        <testsuite name="TestSuite">
+            <directory>application/tests</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+        <const name="PHPUNIT_TEST" value="1" />
+        <const name="PHPUNIT_CHARSET" value="UTF-8" />
+        <const name="REMOTE_ADDR" value="217.0.0.1" />
+    </php>
+    <filter>
+        <blacklist>
+            <directory suffix=".php">system</directory>
+        </blacklist>
+    </filter>
+</phpunit>
+                \end{lstlisting}
+
+        Ejecutará nuestra aplicación a partir del fichero \emph{bootstrap.php} y lanzará los tests contenidos en la carpeta \emph{application/tests}.
+
+    \item Creación del fichero \emph{bootstrap.php}
+
+        Este fichero es una copia del \emph{index.php}, se ha modificado el entorno a testing, la dirección remota del servidor, el reporte de errores del sistema y el path de las carpetas:
+                \begin{lstlisting}
+define('ENVIRONMENT', 'testing');
+
+$_SERVER["REMOTE_ADDR"]     = array_key_exists( 'REMOTE_ADDR', $_SERVER) ? $_SERVER['REMOTE_ADDR'] : '127.0.0.1';
+
+error_reporting(E_ALL ^ E_NOTICE);
+$system_path = '../../system';
+$application_folder = '../../application';
+                \end{lstlisting}
+
+    \item En nuestra definición de controlador global se ha añadido una condición para comprobar si estamos en modo testing. En modo testing no se carga ninguna librería y se añade en su lugar la carpeta de \emph{tests/mockups} como paquete, de esta manera se cargarán en nuestros tests de ahí aquellas librerías mockups que se añadan.
+
+                \begin{lstlisting}
+if (defined('ENVIRONMENT') && ENVIRONMENT == 'testing') {
+    $this->load->add_package_path(APPPATH.'tests/mockups');
+} else {
+    $this->load->library('login_auth');
+}
+                \end{lstlisting}
+\end{itemize}
