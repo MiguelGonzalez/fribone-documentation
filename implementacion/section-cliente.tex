@@ -48,3 +48,11 @@ El componente cliente se ha implementado utilizando varias tecnologías web:
             Es una librería JavaScript que simplifica la creación de rutas enfocado a webs de una única página, donde toda la información se carga vía Ajax y plantillas. Utiliza la HTML5 History API para manipular la URL del navegador sin recargar la página entera, dando la sensación de navegación entre distintas páginas web.
 
     \end{itemize}
+
+Se han creado dos zonas web diferenciadas; una parte pública donde el usuario puede loguearse o registrarse en el sistema; y una parte privada donde el usuario puede acceder a su información.
+
+La zona privada de la plataforma web se ha creado utilizando un diseño conocido como Single Page App, es decir, se carga la página una sola vez y toda la navegación posterior se realiza mediante \emph{Ajax} y un sistema de plantillas.
+
+Las ventajas de este diseño es que no es necesario recargar la página entera cada vez que se quiere acceder a una nueva sección, solo se necesitan pintar pequeñas zonas de la página web. Una de las desventajas es que las páginas que se crean con este diseño no son facilmente indexadas por los buscadores, por ello, es un diseño que se suele utilizar en zonas privadas donde no tienen acceso a los buscadores y no importa que el contenido no sea indexado.
+
+\input{implementacion/cliente/flujo-aplicacion}
