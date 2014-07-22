@@ -92,10 +92,59 @@ Se han implementado las siguientes librerías en el sistema:
 
     \begin{itemize}
         \item Login\_auth\_library.php
+
+            Esta librería es la más crucial a la hora de aportar seguridad ya que se encarga de validar los datos de un usuario cuando intenta acceder al sistema; además de controlar el registro de los usuarios, la recuperación de contraseñas y la opción para salir de una cuenta; destruyéndo la sesión del usuario.
+
+            Se ha utilizado la función nativa \emph{password\_hash} que ofrece \emph{PHP} para crear el Hash de la contraseña que guardaremos en base de datos. Esta función solo funciona en versiones de \emph{PHP 5.5.0} o superiores, si es inferior se utiliza la función \emph{crypt}.
+
+            El algoritmo empleado para hashear con la función \emph{password\_hash} es \emph{BCrypt}. Este algoritmo se considera seguro y perdurable en el tiempo ya que puede establecer el coste de computación para obtener el hash, por lo que aunque la potencia de cálculo de las máquinas aumente se puede aumentar el coste de computación, esto hace que en un futuro siga siendo un algoritmo fuerte contra ataques de fuerza bruta.
+
+            Por el contrario, el algoritmo \emph{DES} que utiliza la función \emph{crypt} se considera insegura, ya que el tamaño de clave que emplea solo es de 56 bits,
+
+            La función para obtener el Hash se encarga de comprobar la versión de \emph{PHP}, si es inferior se utiliza la función \emph{crypt} con un \emph{salt}; aún así a día de hoy ya se empieza a considerar inseguro porque utiliza un algoritmo DES \emph{Data Encryption Standard} con un tamaño de clave de 56 bits que permite realizar ataques de fuera bruta para obtener la contraseña en un tiempo relativamente corto.
+
+            A continuación se expone la función para obtener el hash de una contraseña, donde se compara la versión de \emph{PHP} para utilizar uno u otro:
+
+            \begin{lstlisting}
+private function get_password_hash($password) {
+    $password_hashed = NULL;
+
+    if (strnatcmp(phpversion(),'5.5.0') >= 0) {
+        $password_hashed = password_hash($password, PASSWORD_BCRYPT);
+    } else {
+        // Original PHP code by Chirp Internet: www.chirp.com.au
+        // Please acknowledge use of this code by including this header.
+        $salt = "";
+        $salt_chars = array_merge(range('A','Z'), range('a','z'), range(0,9));
+        for($i=0; $i < 22; $i++) {
+            $salt .= $salt_chars[array_rand($salt_chars)];
+        }
+        $password_hashed = crypt($password, sprintf('$2a$%02d$', 7) . $salt);
+    }
+
+    return $password_hashed;
+}
+            \end{lstlisting}
+
+            Además, para evitar ataques de fuera bruta, se ha implementado un sistema que registra los intentos para acceder a una cuenta. Incrementando hasta un máximo de 45 segundo el tiempo entre intentos, y además, al llegar a este máximo a partir del cual se considera que es un ataque de fuerza bruta, en el formulario se incluye un campo de seguridad para que el usuario resuelva (una operación matemática).
+
         \item My\_PHPMailer.php
+
+            Esta librería permite el envío de correos electrónicos a través de SMTP ó, si el servidor no lo soporta, utilizando el método \emph{send\_mail}. Para funcionar se carga la librería \emph{PHPMailer}, esta librería implementa funcionalidades para el envío de email como el soporte para el envío de adjuntos o el disponer de una implementación de un servidor \emph{SMTP} para entornos donde no se dispone de un servidor de correos local.
+
         \item Fridge\_library.php
+
+            Esta librería, a través del modelo fridge, permite la creación de frigoríficos a un usuario, asi como añadir productos a la compra utilizando para ello la librería \emph{Compra\_library.php} y el modelo \emph{fridge\_model}.
+
         \item Compra\_library.php
+
+            Esta librería se encarga de añadir productos al frigorífico, gestionando las compras, para ello utiliza las librerías \emph{supermercado\_model} y \emph{compra\_model}.
+
+            Su funcionamento al añadir un producto es buscar una compra creada en la última media hora, si no se encuentra ninguna se crea una compra, y si ya existe una, el producto se añade a dicha compra. De esta manera los productos que se añaden se agrupan en compras.
+
         \item Supermercado\_library.php
+
+            Esta librería permite gestionar los supermercados y sus productos utilizando para ello el modelo \emph{supermercado\_model}.
     \end{itemize}
 
     \subsubsection{Esquema de modelos}
