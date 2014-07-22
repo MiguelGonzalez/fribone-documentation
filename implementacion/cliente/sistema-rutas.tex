@@ -1,0 +1,46 @@
+\subsection{Sistema de rutas}
+
+Para el sistema de rutas en el lado del cliente se ha utilizado la librería JavaScript \emph{Director}. Esta librería funciona tanto desde lado cliente como desde el lado servidor con \emph{Node.js}, de hecho, forma parte del framework \emph{flatiron} para desarrollo web utilizando como tecnología \emph{Node.js}.
+
+Con \emph{Director} podemos definir un sistema de rutas, y de rutas anidadas, que permiten ejecutar una (o varias) funciones al encontrarnos sobre ella.
+
+Al cargar la página, se crea un objeto del tipo Router que ofrece \emph{Director}, se le pasa en el constructor nuestro sistema de rutas y automáticamente buscará aquellas rutas que concuerden con la dirección web del navegador para llamar a las funciones que cumplan las condiciones.
+
+Además, para realizar la navegación entre las distintas secciones de la página, se utiliza objeto \emph{Router} para indicarle a donde queremos ir (función \emph{setRoute}). Automáticamente se encargará de modificar la URL y de llamar a las funciones que se hayan definido para dicha ruta.
+
+Para este proyecto se ha configurado router para utilizar la HTML5 History API, si no se indicase utilizaría un sistema de Hashes.
+
+A continuación se muestra el sistema de rutas que se ha definido para el portal privado del usuario:
+
+    \begin{lstlisting}
+var routes = {
+    '/tablon': tablon.draw,
+    '/fridge/:id': {
+        '/productos': fridge.draw_productos,
+        '/compras': {
+            '/:id': fridge.draw_compra,
+            on: fridge.draw_compras
+        },
+        on: fridge.draw
+    },
+    '/supermercados' : {
+        '/:id': supermercado.draw,
+        on: supermercados.draw
+    }
+};
+    \end{lstlisting}
+
+Al construir el objeto \emph{Router} se le pasan las rutas que hemos definido y la configuración específica que se desea establecer (\emph{HTML5 History API}).
+
+    \begin{lstlisting}
+var router = new Router(routes).configure({
+    html5history: true
+});
+    \end{lstlisting}
+
+Y por último se inicializa.
+
+    \begin{lstlisting}
+router.init();
+    \end{lstlisting}
+
