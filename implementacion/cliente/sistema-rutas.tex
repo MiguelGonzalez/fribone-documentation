@@ -38,9 +38,12 @@ var router = new Router(routes).configure({
 });
     \end{lstlisting}
 
-Y por último se inicializa.
+Existe otro parámetro de configuración muy interesante, el parámetro \emph{recursion}, por defecto está deshabilitado en el lado cliente, si se activa se puede indicar el orden de recursión; \emph{backward} ó \emph{forward}. La recursión se utiliza cuando se crean subrutas, si se habilita, se puede definir si es llamado primero el hijo y luego el padre (ó padres); o viceversa.
+
+Se ha dejado deshabilitado esta funcionalidad debido a que se controlan las llamadas entre rutas, subrutas... Desde los controladores, lo cual permite controlar si hay que renderizar el padre o si ya está renderizado.
+
+Por último, para que \emph{Router} empiece a funcionar, hay que llamar a su método \emph{init}.
 
     \begin{lstlisting}
 router.init();
     \end{lstlisting}
-
