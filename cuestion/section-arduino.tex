@@ -13,7 +13,7 @@ El hardware consiste en una placa con un microcontrolador \emph{Atmel AVR} y pue
 \begin{figure}[h!]
     \centering
     \includegraphics[keepaspectratio,width=0.6\textwidth]{arduino_uno_test.eps}
-    \label{fig:arduino_uno_test}
+    \caption{Arduino uno}\label{fig:arduino_uno_test}
 \end{figure}
 
 
@@ -22,7 +22,7 @@ Por otro lado el software consiste en un entorno de desarrollo que implementa el
 \begin{figure}[h!]
     \centering
     \includegraphics[keepaspectratio,width=0.6\textwidth]{arduino-ide.eps}
-    \label{fig:arduino-ide}
+    \caption{IDE Arduino}\label{fig:arduino-ide}
 \end{figure}
 
 El lenguaje de alto nivel \emph{Wiring}, implementado en C/C++, permite una programación sencilla del hardware. Comparte todas las funciones estándar de C, algunas de C++ y añade las propias para el manejo de puertos (digitales, analógicos).
@@ -53,7 +53,7 @@ Existen una gran variedad de placas Arduino, tanto oficiales como no oficiales; 
 \begin{figure}[h!]
     \centering
     \includegraphics[keepaspectratio,width=0.6\textwidth]{arduino_yun_front.eps}
-    \label{fig:arduino-ide}
+    \caption{Frontal arduino}\label{fig:arduino-yun-front}
 \end{figure}
 
 La ventaja principal, y por la que me he decantado por comprar esta placa, es la combinación de Arduino (\emph{ATmega 32U4}) con un sistema operativo Linux (\emph{AR9331}) con conectividad Wi-Fi. Esto permite utilizar todo el potencial de Arduino en el desarrollo de nuestro hardware y obtener todo el potencial de una máquina Linux, a través del sistema operativo \emph{Linino}, para ejecutar comandos, scripts, aplicaciones y cualquier cosa que se nos ocurra.
@@ -61,7 +61,7 @@ La ventaja principal, y por la que me he decantado por comprar esta placa, es la
 \begin{figure}[h!]
     \centering
     \includegraphics[keepaspectratio,width=0.6\textwidth]{arduino_parts.eps}
-    \label{fig:arduino-ide}
+    \caption{Componentes de arduino}\label{fig:arduino-parts}
 \end{figure}
 
 La comunicación entre Arduino y Linux se realiza a través de la librería \emph{Bridge}, facilitando la comunicación entre los dos procesadores. La librería da la habilidad a Arduino y correr scripts, comunicarse con interfaces de red y recibir información del procesador \emph{AR9331}. El Host USB, las interfaces de red y el lector de tarjetas de memoria están conectados al procesador \emph{AR9331} manejado por Linux, la librería Bridge también permite a Arduino acceder a estos periferios.
@@ -109,13 +109,13 @@ Uno de los componentes para dotar de comunicación a nuestra placa Arduino es ut
 \begin{figure}[h!]
     \centering
     \includegraphics[keepaspectratio,width=0.6\textwidth]{pantalla_tft_front.eps}
-    \label{fig:arduino-ide}
+    \caption{Pantalla TFT}\label{fig:arduino-tft-front}
 \end{figure}
 
 
 \parpic[r][]{
     \includegraphics[keepaspectratio,width=0.38\textwidth]{arduino_conexiones.eps}
-    \label{fig:design-for-dreaming}
+    \label{fig:arduino_conexiones}
 }
 
 Es una pantalla de 1,77" de diagonal, con 160x128 pixels de resolución, y con un lector de tarjetas SD para cargar imágenes. La pantalla está pensada para encajar con las placas \emph{Arduino Esplora} ó \emph{Arduino Robot}, con el resto de placas Arduino se pueden realizar las conexiones a mano.
@@ -148,7 +148,7 @@ A continuación se muestra una captura de como se visualiza el dibujo en la pant
 \begin{figure}[h!]
     \centering
     \includegraphics[keepaspectratio,width=0.4\textwidth]{tft_circulo_cuadrado.eps}
-    \label{fig:arduino-ide}
+    \caption{TFT - Dibujando}\label{fig:tft_circulo_cuadrado}
 \end{figure}
 
 En cambio, para cargar una imagen desde la tarjeta de memoria y mostrarla en la pantalla TFT, primero tenemos que esperar a que la memoria SD esté inicializada y a continuación, leer la imagen y renderizarla en pantalla:
@@ -177,5 +177,5 @@ A continuación se muestra una captura de como se visualiza la imagen en la pant
 \begin{figure}[h!]
     \centering
     \includegraphics[keepaspectratio,width=0.4\textwidth]{tft_f1.eps}
-    \label{fig:arduino-ide}
+    \caption{TFT - Imagen}\label{fig:tft_f1}
 \end{figure}
