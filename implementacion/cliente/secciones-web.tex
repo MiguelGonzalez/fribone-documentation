@@ -12,18 +12,54 @@
             \begin{figure}[H]
                 \centering
                 \includegraphics[keepaspectratio,width=0.9\textwidth]{fribone-web-home.png}
-                \caption{Home aplicación web}\label{fig:fribone-web-home}
+                \caption{Web - Home pública}\label{fig:fribone-web-home}
             \end{figure}
 
-
         \item Zona privada de usuario
+
+            Esta zona solo es accesible cuando un usuario registrado en la plataforma web se encuentra logueado en el sistema. En caso de no estarlo, se redirije a la Home pública.
+
+            La zona privada se encuentra formada de las siguientes secciones:
 
             \begin{itemize}
                 \item Frigorífico
 
+                Es una de las secciones más importantes de toda la web ya que permite visualizar rapidamente los productos que se tienen en el frigorífico.
+
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[keepaspectratio,width=0.9\textwidth]{fribone-web-home.png}
+                    \caption{Web - Sección frigorífico}\label{fig:fribone-web-home}
+                \end{figure}
+
+                \parpic[r][]{
+                    \includegraphics[keepaspectratio,width=0.15\textwidth]{fribone-web-detalles-producto-frigorifico.png}
+                    \label{fig:fribone-web-detalles-producto-frigorifico}
+                }
+
+                Se puede clickar en cada uno de los productos que se dispongan en el frigorífico para consultar más información acerca de cada uno de los productos (Precio, unidades, código de barras y código rfid).
+
                 \item Compras realizadas
 
+                Las compras se crean automáticamente al añadir productos al frigorífico, sea desde la web o desde el componente hardware realizado con arduino.
+
+                Al introducir un producto se busca si hay una compra creada en la última media hora, si es así, el producto se mete a dicha compra, si no se crea una nueva compra. En resumen, una compra engloba todos los productos introducidos en un rango de tiempo de media hora.
+
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[keepaspectratio,width=0.9\textwidth]{fribone-web-compras.png}
+                    \caption{Web - Sección frigorífico}\label{fig:fribone-web-comras}
+                \end{figure}
+
                 \item Detalles de una compra
+
+                Además de poder visualizar las compras realizadas, al clickar sobre una de ellas, se nos despliega toda la información de dicha compra; productos introducidos en el frigorífico y el total de la compra.
+
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[keepaspectratio,width=0.9\textwidth]{fribone-web-compra.png}
+                    \caption{Web - Sección compra}\label{fig:fribone-web-compra}
+                \end{figure}
 
                 \item Supermercados
 
