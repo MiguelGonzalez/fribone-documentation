@@ -172,7 +172,7 @@ private function get_total_compra($id_compra) {
 }
         \end{lstlisting}
 
-        Una vez explicado el funcionamiento del acceso a Base de Datos, se expone a continuación el esquema de modelos utilizado:
+        Los siguientes modelos permiten manejar la información en base de datos a través del \emph{Active Record Database} explicado anteriormente. Se han separado lógicamente, cada modelo engloba unas pocas tablas para especializarse al acceso de esos datos.
 
         \begin{itemize}
             \item user\_model.php
@@ -180,3 +180,7 @@ private function get_total_compra($id_compra) {
             \item compra\_model.php
             \item supermercado\_model.php
         \end{itemize}
+
+        Así, permiten recuperar una o varios registros en base de datos, modificar información o incluso realizar un borrado lógico.
+
+        Un borrado lógico es actualizar un registro para marcarlo como borrado, sin llegar a borralo físicamente de la base de datos, esto es útil para poder recuperar información (análisis de datos) en un futuro, o incluso, poder recuperar registros en un futuro.
