@@ -179,3 +179,65 @@ A continuación se muestra una captura de como se visualiza la imagen en la pant
     \includegraphics[keepaspectratio,width=0.4\textwidth]{tft_f1.eps}
     \caption{TFT - Imagen}\label{fig:tft_f1}
 \end{figure}
+
+\subsection{RFID}
+
+\parpic[r][]{
+    \includegraphics[keepaspectratio,width=0.38\textwidth]{lector_rfid.png}
+    \label{fig:lector_rfid}
+}
+
+El lector \emph{RFID} es uno de los componentes empleados para poder escanear productos. En concreto se ha utilizado para el proyecto un lector \emph{RFID de 125K} con las siguientes características:
+
+\begin{itemize}
+    \item Working voltage: 3.5-5V
+    \item Frequency: 125Khz
+    \item Baud rate: 9600
+    \item Interface Type: TTL Level RS232 format
+    \item Reception range: 30mm~50mm
+\end{itemize}
+
+El código para trabajar con el lector \emph{RFID} es muy sencillo, la única ''complicación'' es tener que utilizar la librería \emph{SoftwareSerial} para simular dos pintes como puerto serie.
+
+No se pueden utilizar los pines dedicados de puerto serie (\emph{0 y 1}) ya que \emph{Arduino Yún} los utiliza para la comunicación entre el microcontrolador \emph{ATmega32U4} y el microprocesador \emph{Atheros AR9331} a través de la librería \emph{Bridge}.
+
+El código utilizado para escanear tarjetas \emph{RFID} es el siguiente:
+
+\begin{lstlisting}
+//Lector RFID
+#include <SoftwareSerial.h>
+#define rxPin 11
+#define txPin 12
+SoftwareSerial RFID = SoftwareSerial(rxPin, txPin); // RX and TX
+char arrayTag[10];
+
+void setup() {
+    RFID.begin(9600);
+}
+
+void loop() {
+    if(leerYProcesarEtiquetaRFID()) {
+        // Hacer algo
+    }
+}
+
+boolean leerYProcesarEtiquetaRFID() {
+  int leidoTag = 0;
+
+  String tag;
+  while(RFID.available() > 0) {
+      leidoTag = 1;
+      int rfid = RFID.read();
+
+      if(rfid != 13 && rfid != 10) {
+         tag += (char)rfid;
+      }
+  }
+  if(leidoTag) {
+    tag.toCharArray(arrayTag, 10);
+  }
+
+  return leidoTag != 0;
+}
+\end{lstlisting}
+
