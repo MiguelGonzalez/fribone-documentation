@@ -80,6 +80,10 @@ Controladores de API \emph{RESTful}
 
             Se encarga de procesar las solicitudes para manejar los supermercados y los productos que contienen.
 
+        \item api.php
+
+            Proporciona una serie de funciones accesibles desde el exterior para permitir al lector comunicarse con el servidor. Por ejemplo, añadir un producto al frigorífico del usuario.
+
     \end{itemize}
 
     \subsubsection{Esquema de librerías}
@@ -132,6 +136,24 @@ private function get_password_hash($password) {
 
             Esta librería permite el envío de correos electrónicos a través de SMTP ó, si el servidor no lo soporta, utilizando el método \emph{send\_mail}. Para funcionar se carga la librería \emph{PHPMailer}, esta librería implementa funcionalidades para el envío de email como el soporte para el envío de adjuntos o el disponer de una implementación de un servidor \emph{SMTP} para entornos donde no se dispone de un servidor de correos local.
 
+        \item Lector\_library.php
+
+            Esta librería nos permite crear y asociar los lectores físicos que se dispongan.
+
+            Para asociar un lector se generan dos códigos de barras que deben ser escaneados en el tiempo de una hora; tiempo en el que están activos. El formato de los códigos de barras es el siguiente:
+
+            \begin{itemize}
+                \item Primer código de barras
+
+                    Está formado por la suma del identificador del usuario más la fecha unix actual. Se rellena con ceros a la izquierda hasta completar doce dígitos.
+
+                \item Segundo código de barras
+
+                    Está formado por doce caracteres numéricos generados de forma aleatoria.
+            \end{itemize}
+
+            Cuando un lector lanza una petición se realiza la comprobación de los dos códigos de barra, y si son válidos, se le devuelve un \emph{token} al lector, el cual será utilizado a modo de identificador para lanzar todas las peticiones.
+
         \item Fridge\_library.php
 
             Esta librería, a través del modelo fridge, permite la creación de frigoríficos a un usuario, asi como añadir productos a la compra utilizando para ello la librería \emph{Compra\_library.php} y el modelo \emph{fridge\_model}.
@@ -179,6 +201,7 @@ private function get_total_compra($id_compra) {
             \item fridge\_model.php
             \item compra\_model.php
             \item supermercado\_model.php
+            \item lector\_model.php
         \end{itemize}
 
         Así, permiten recuperar una o varios registros en base de datos, modificar información o incluso realizar un borrado lógico.
