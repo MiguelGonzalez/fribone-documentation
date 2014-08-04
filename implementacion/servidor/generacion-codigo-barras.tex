@@ -1,0 +1,27 @@
+\subsection{Generación de código de barras}
+
+Para enlazar el lector con la aplicación se generan dos códigos de barras que deben ser escaneador por el lector. Se ha ideado esta forma debido a que es la forma más sencilla que se tiene para introducir información en el aparato.
+
+Para generar los códigos de barra se ha buscado una librería que cumpla con la codificación EAN-13 (\emph{European Article Number} ó \emph{International Article Number}). Es un sistema de codificación adoptado por más de 100 países compuesto por 13 dígitos que siguen el siguiente formato:
+
+    \begin{itemize}
+        \item Código del país (3 dígitos)
+        \item Código de empresa (4 o 5 dígitos)
+        \item Código del producto (completa los 12 primeros dígitos)
+        \item Dígito de control
+    \end{itemize}
+
+Tras realizar una búsqueda de las librerías existentes en \emph{PHP} que cumplan estos requisitos, finalmente, se ha encontrado un proyecto en \emph{GitHub} (\url{https://github.com/rlt3/php-barcode}) que encaja con lo que se busca.
+
+En la integración con el proyecto, como es de esperar en cualquier integración, se ha tenido un problema con el renderizado de los caracteres ya que utiliza una fuente que no estaba instalada en el sistema, como solución se ha añadido la fuente \emph{FreeSansBold.ttf} a la librería y se carga indicando la ruta a la fuente, así no se depende de la configuración del servidor. Además, se ha realizado un refactor de algunas de las funciones de la librería.
+
+Una vez resueltos los problemas se ha realizado un \emph{Fork} de la librería, dejando los cambios refactorizados accesibles para futuros usos de la librería ó para cualquier otro usuario que realice una búsqueda de la misma.
+
+A continuación se muestra el código para imprimir por pantalla un código de barras:
+
+    \begin{lstlisting}
+public function generar_barcode($number) {
+    $barCode = new Barcode($number);
+    $barCode->display();
+}
+    \end{lstlisting}
