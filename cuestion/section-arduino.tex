@@ -241,3 +241,14 @@ boolean leerYProcesarEtiquetaRFID() {
 }
 \end{lstlisting}
 
+\subsection{Lector de código de barras}
+
+Además de utilizar como método de entrada un lector \emph{RFID} se ha utilizado otro método tradicional, el lector de código de barras. Para ello se ha buscado un lector que sea \emph{USB HID}, es decir, que no necesite la instalación de drivers para funcionar.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[keepaspectratio,width=0.4\textwidth]{lector_codigo_barras.png}
+    \caption{Lector de código de barras}\label{fig:lector_codigo_barras}
+\end{figure}
+
+En la sección \emph{COMPONENTE HARDWARE} se explica la configuración de \emph{Arduino Yún} y como se decodifica la entrada de dígitos del lector con \emph{Python}.
