@@ -4,7 +4,7 @@ El componente hardware se ha implementado utilizando dos lenguajes de programaci
 
 \subsection{Configurando el sistema}
 
-El primer paso es configurar la placa de Arduino Yún para empezar a trabajar sobre ella. Para ello Yún corre una distribución de Linux llamada \emph{OpenWrt-Yun}, basado en \emph{OpenWrt}, la cual nos permite acceder vía \emph{ssh} o vía web para poder configurarla. 
+El primer paso es configurar la placa de Arduino Yún para empezar a trabajar sobre ella. Para ello Yún corre una distribución de Linux llamada \emph{OpenWrt-Yun}, basado en \emph{OpenWrt}, la cual nos permite acceder vía \emph{ssh} o vía web para poder configurarla.
 
 La primera vez que se conecta Arduino Yún se crea una red sin encriptar para poder conectarnos a ella y poder configurarla, el nombre de la red tiene el formato \emph{ArduinoYun-XXXXXXXXXXXX}. Una vez conectados se accede al panel web de configuración a través de la url \emph{http://arduino.local} y se nos muestra la siguiente ventana:
 
@@ -45,7 +45,7 @@ Pasado varios segundos automáticamente se nos volverá a conectar a la página 
 La versión de Linux que trae la placa Arduino no viene con las librerías para utilizar el puerto USB en modo HID (\emph{Human Interface Device}) por lo que no reconoce el lector de códigos de barras USB. Para configurarlo se han tenido que bajar las librerías e instalarlas a través de SSH.
 
 \begin{enumerate}
-	
+
 	\item Descargar y guardar en la memoria micro-sd (\emph{/mnt/sda1/}) las dos siguientes librerías:
 
 		\begin{itemize}
@@ -148,7 +148,7 @@ El siguiente problema a resolver es la creación de un script en python que perm
 
 El funcionamiento es muy sencillo. Cuando el lector de código de barras encuentra un código válido lo envía al sistema por letras y por último, y es lo que nos ayuda a comprender que ha terminado de enviarnos el código de barras, nos envía dos caracteres seguidos (\emph{Control + j}) que simbolizan el salto de línea (\emph{Line Feed}).
 
-El siguiente script nos permite, una vez conectado el código de barras, leer los eventos y mostrar por pantalla los códigos capturados:
+El siguiente script nos permite leer los caractéres escaneados e imprimirlos por consola o enviarlos al microcontrolador a través de la librería \emph{Bridge}.
 
 \begin{lstlisting}
 #!/usr/bin/python
@@ -160,6 +160,19 @@ import sys
 sys.path.insert(0, '/usr/lib/python2.7/bridge/')
 
 from bridgeclient import BridgeClient as bridgeclient
+
+# Variables
+infile_path = "/dev/input/event1"
+
+#long int, long int, unsigned short, unsigned short, unsigned int
+FORMAT = 'llHHI'
+EVENT_SIZE = struct.calcsize(FORMAT)
+
+teclasPulsadas = dict()
+escribiendoLetras = False
+codigoBarras = ''
+bridgeCliente = bridgeclient()
+in_file = None
 
 # Funciones
 
@@ -183,38 +196,19 @@ def esTeclaControl(value):
     return value == 458792 or \
             value == 458976 or \
             value == 458765
-
-# Inicio programa
-
-infile_path = "/dev/input/event1"
-
-#long int, long int, unsigned short, unsigned short, unsigned int
-FORMAT = 'llHHI'
-EVENT_SIZE = struct.calcsize(FORMAT)
-
-#open file in binary mode
-in_file = open(infile_path, "rb")
-
-event = in_file.read(EVENT_SIZE)
-
-teclasPulsadas = dict()
-escribiendoLetras = False
-codigoBarras = ''
-bridgeCliente = bridgeclient()
-
-while event:
+def procesarEvento(event):
+    global teclasPulsadas, escribiendoLetras, codigoBarras, bridgeCliente
     (tv_sec, tv_usec, type, code, value) = struct.unpack(FORMAT, event)
 
-    # Importa este orden de la condici|ó|n, si se altera puede imprimir
-    # car|á|cteres escritos muy deprisa en otro orden
+    # Importa este orden de la condicion, si se altera puede imprimir
+    # caracteres escritos muy deprisa en otro orden
     if value not in teclasPulsadas:
         teclasPulsadas[value] = 'S'
     else:
         if esTeclaControl(value) and escribiendoLetras:
             escribiendoLetras = False
-            # print codigoBarras
-
-            bridgeCliente.put('codebar', codigoBarras)
+            print codigoBarras
+            #bridgeCliente.put('codebar', codigoBarras)
 
             codigoBarras = ''
         elif not esTeclaControl(value) and \
@@ -227,6 +221,26 @@ while event:
                 codigoBarras += getTeclaLetra(value)
         del teclasPulsadas[value]
 
-    event = in_file.read(EVENT_SIZE)
-in_file.close()
+def conectarUsb():
+    global in_file
+    in_file = None
+    conectado = False
+    while not conectado:
+        try:
+            # Intentamos abrir el fichero
+            in_file = open(infile_path, "rb")
+            conectado = True
+        except IOError:
+            time.sleep(1) # Pausamos 1seg
+
+# Inicio programa
+conectarUsb()
+event = in_file.read(EVENT_SIZE)
+while event:
+    try:
+        procesarEvento(event)
+        event = in_file.read(EVENT_SIZE)
+    except IOError:
+        conectarUsb()
+        event = in_file.read(EVENT_SIZE)
 \end{lstlisting}
