@@ -1,3 +1,35 @@
 \chapter{CONCLUSIONES}
 
-Conclusiones
+Este proyecto ha abordado el diseño y la construcción de un componente hardware apoyado por una plataforma en la nube para el seguimiento del consumo en el hogar, en concreto las compras realizadas en los supermercados. Para ello, se ha utilizado \emph{Arduino Yún} y una serie de componentes en el diseño del prototipo y de distintas tecnologías web para la construcción de la aplicación web.
+
+La elección de este proyecto surgió de la curiosidad acerca de \emph{Arduino}, del creciente entusiasmo en cuantificar todo lo que se pueda y de la multitud de aplicaciones que se utilizan para llevar el control de los gastos en el hogar.
+
+\section{Primer paso}
+
+El primer paso en el proyecto fue hacerse con un \emph{Arduino} para empezar a jugar con él y familiarizarse con su entorno de programación. Simultáneamente se adquirió un lector de código de barras con conector \emph{USB HID}.
+
+La versión de \emph{Arduino} elegida fue la \emph{UNO} debido a que su precio económico y a la amplia documentación que hay sobre la placa. El primer problema que se tuvo fue la falta de conexión \emph{USB} de la placa, se resolvió adquiriendo una \emph{Shield USB}. El segundo problema vino por la falta de conexión \emph{WiFi}, se intentó resolver adquiriendo una \emph{Shield WiFi} no oficial, pero no se logró hacer que funcionara.
+
+Con estos problemas el segundo paso consistió en investigar y en conocer \emph{Arduino Yún}, una placa \emph{Arduino} que resuelve estos problemas ya que dispone de un puerto \emph{USB} y de un microprocesador con \emph{Linux} y conexión \emph{WiFi}. Con todos los componentes adecuados se diseñó el primer software para el escaneo de códigos de barras, el cual se guardaba a través de \emph{Internet} en un servidor.
+
+\section{Segundo paso}
+
+El segundo paso consistió en desarrollar la aplicación servidor utilizando para ello algunas de las piezas que componen las metodologías ágiles; control de versiones, tests unitarios e integración contínua.
+
+\begin{itemize}
+
+    \item Para el control de versiones se ha utilizado \emph{GitHub}, una plataforma que permite la creación de repositorios públicos de manera gratuita y que actualmente es la que más auge tiene en los proyectos de código abierto.
+
+    \item Para los tests unitarios se ha utilizado \emph{PHPUnit} debido a que es uno de los frameworks más conocidos. Se tuvieron que resolver problemas con \emph{CodeIgniter} ya que no está pensado para realizar tests sobre él.
+
+    \item Para la integración contínua se ha utilizado \emph{TravisCI}, una herramienta web que se sincroniza con tu cuenta de \emph{GitHub} para construir y pasar los tests unitarios de todas las modificaciones que realices sobre el repositorio.
+
+\end{itemize}
+
+\section{Tercer paso}
+
+A continuación, con las primeras versiones de la aplicación servidor, se fue realizando el diseño de la página web utilizando para ello \emph{Bootstrap} y algunas librerías \emph{JavaScript} como; \emph{JQuery}, \emph{Director}, \emph{Handlebars}, etc.
+
+\section{Cuarto paso}
+
+
