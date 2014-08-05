@@ -1,25 +1,49 @@
 \chapter{LÍNEAS FUTURAS}
 
-La principal motivación de este proyecto es permitir a los hogares contar con un dispositivo económico para cuantificar el consumo alimenticio, es decir, guardar toda la información sobre las compras realizadas, cuando se ha consumido un alimento, qué es necesario comprar, etc.
+La principal motivación de este proyecto es acercar la tecnología a una de las actividades cotidianas que menos ha cambiado a lo largo de la historia; realizar la compra.
 
-Hoy en día no hay soluciones baratas a este problema ya que las grandes compañías están aplicando esta tecnología a la creación de frigoríficos futuristas. Con este proyecto se pretende lograr aplicar esta tecnología futurista a través de un componente sencillo y barato, soportado por una aplicación que se encargue de ofrecer toda la información detallada.
+Para ello se ha diseñado un dispositivo que permita cuantificar y ofrecer información al usuario acerca de sus compra. Por ejemplo, permitir consultar los productos que dispone en el frigorífico, las compras que ha realizado a lo largo del tiempo, análisis de gastos, etc.
 
-Con el objetivo de poder comercializar realmente este proyecto se proponen las siguientes líneas futuras.
+Las grandes compañías a nivel mundial aún no han dado el salto a utilizar este tipo de tecnologías en sus productos convencionales. Sí disponen de algun frigorífico de gama alta con tecnología futurista, los cuales, no son accesibles para el consumidor medio.
+
+Por ello, con este proyecto se pretende acercar al consumidor a parte de esta tecnología futurista. A través de un componente sencillo, barato y elegante. Por ello, con el objetivo de poder comercializar realmente este proyecto se proponen las siguientes líneas futuras.
 
 \section{COMPONENTE HARDWARE}
 
-El componente hardware que se ha realizado se puede considerar un prototipo, para una comercialización del mismo se deberían realizar las siguientes mejoras:
+El componente hardware que se ha diseñado es un prototipo funcional del producto final. Pero, para una comercialización del producto es recomendable realizar las siguientes innovaciones:
 
 \begin{itemize}
-    \item Diseñar e integrar un lector de código de barras en miniatura dentro de la caja.
-    \item Integrar una pantalla más grande y con respuesta táctil para ahorrarnos los botones.
-    \item Diseñar una caja en plástico para contener todos los componentes en su interior
+    \item Miniaturización
+
+        El componente que más ocupa del prototipo es el lector de código de barras. Es necesario encontrar un proveedor que proporcione un lector pequeño y discreto, de esta manera se puede integrar en la parte inferior del producto sin ocupar un gran espacio.
+
+    \item Diseño
+
+        Fribone es un producto pensado para el hogar, en concreto, la cocina. Por lo que tiene que ser un producto elegante e integrador, nadie quiere un producto que rompa la armonía de la cocina.
+
+    \item Ergonomía
+
+        La mayoría de las personas experimentan algún grado de limitación física en algún momento de su vida. Por lo tanto, el diseño final del producto, además de ser elegante, debe estar pensado para que pueda ser manejado por personas con ciertas discapacidades físicas.
+
+        Una manera de afrontar esta tarea es pensar en la eliminación de los botones del aparato, que pueden ser dificiles de pulsar, y añadir una pantalla más grande y con respuesta táctil. Así, se puede realizar una interfaz con unos botones en pantalla grandes y visibles.
+
 \end{itemize}
 
 \section{COMPONENTE SERVIDOR Y SOFTWARE}
 
-Ahora mismo solo se permite el registro a través del propio servidor lo cual implica una molestia al usuario al tener que rellenar sus datos para registrarse en un servicio una vez más. Una propuesta a mejorar es el registro través de otros servicios como \emph{Google} o \emph{Facebook}.
+La arquitectura y diseño del software ha seguido una metodología ágil. Así, se ha conseguido levantar una infraestructura usable en un tiempo breve. Gracias a los tests unitarios y a la plataforma de integración continua, \emph{TravisCI}, se pueden seguir desarrollando pequeños cambios incrementales para dotar de más potencia a la aplicación:
 
-Por otro lado, se dispone de una base de datos que los usuarios hacen crecer en base a sus compras. Con toda esta información, se pueden realizar soluciones de \emph{Data Mining} que le ofrezcan a los usuarios información útil.
+\begin{itemize}
 
-Por último, para obtener beneficio económico de la plataforma sería interesante negociar con cadenas alimenticias para ofrecer compras a través del servidor, con envio a domicilio.
+    \item Universalidad
+
+        Integrar soluciones de acceso a nuestra plataforma a partir de otros servicios (\emph{Facebook}, \emph{Google}, etc.), y ofrecer una \emph{API RESTful} basada en \emph{OAuth 2} para la autorización del acceso a la información.
+
+    \item Data Mining
+
+        Explorar y buscar nuevas técnicas de análisis de la información que ingresan los usuarios para poder ofrecerles sugerencias en base a sus gustos, consejos a la hora de comprar, etc.
+
+    \item Servicios a terceros
+
+        Animar a las compañías del sector comercial a ofrecer sus productos a través de la plataforma. De esta manera, se le pueden ofrecer nuevas experiencias al usuario como la planificación de compras automáticas en base a los productos que dispone en su frigorífico.
+    \end{itemize}

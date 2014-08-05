@@ -1,1 +1,421 @@
-{}
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"render",
+				"rendered_in_body"
+			],
+			[
+				"EMPRESA",
+				"EMPRESA_PROYECTO"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 75.0,
+		"selected_items":
+		[
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/paraca/Desktop/megadown.sh",
+		"/home/paraca/Desktop/Fribone/fribone-documentation/implementacion/section-cliente.tex",
+		"/home/paraca/Desktop/Fribone/fribone-documentation/lineas-futuras/fribone-lineas-futuras.tex",
+		"/home/paraca/Desktop/Fribone/fribone-documentation/bibliografia/fribone-bibliografia.bib",
+		"/home/paraca/Desktop/Fribone/fribone-documentation/titlepic.sty",
+		"/home/paraca/Desktop/Fribone/fribone-documentation/titlesec.sty",
+		"/home/paraca/Desktop/Fribone/fribone-documentation/titlepage.tex",
+		"/home/paraca/Desktop/Fribone/fribone-documentation/implementacion/cliente/sistema-rutas.tex",
+		"/home/paraca/Desktop/Fribone/fribone-documentation/implementacion/hardware/problemas-detectados.tex",
+		"/home/paraca/Desktop/Fribone/fribone-documentation/implementacion/hardware/decodificacion-lector-codigo-barras.tex",
+		"/home/paraca/Desktop/Fribone/fribone-documentation/implementacion/hardware/vinculando-lector.tex",
+		"/home/paraca/Desktop/Fribone/fribone-documentation/implementacion/section-hardware.tex",
+		"/home/paraca/Desktop/Fribone/fribone-documentation/implementacion/hardware/opciones-lector.tex",
+		"/var/www/carrito/application/helpers/dompdf/README.md",
+		"/var/www/carrito/application/helpers/dompdf/CONTRIBUTING.md",
+		"/var/www/carrito/application/helpers/dompdf/dompdf.php",
+		"/var/www/carrito/application/helpers/dompdf/index.php",
+		"/home/paraca/Desktop/Fribone/fribone-documentation/implementacion/hardware/configurando-sistema.tex",
+		"/home/paraca/Desktop/Fribone/fribone-documentation/implementacion/servidor/vinculacion-lector.tex",
+		"/home/paraca/Desktop/Fribone/fribone-documentation/implementacion/cliente/validacion-peticion-lector.tex",
+		"/home/paraca/Desktop/Fribone/fribone-documentation/implementacion/section-servidor.tex",
+		"/var/www/fribone/application/application/libraries/Barcode_library.php",
+		"/home/paraca/Desktop/Fribone/fribone-documentation/implementacion/servidor/esquema-servidor.tex",
+		"/home/paraca/Desktop/Fribone/fribone-documentation/implementacion/servidor/generacion-codigo-barras.tex",
+		"/var/www/carrito/application/helpers/pqp_helper.php",
+		"/var/www/fribone/application/application/libraries/BarCode/barcode.php",
+		"/home/paraca/Desktop/Fribone/fribone-documentation/implementacion/cliente/secciones-web.tex",
+		"/var/www/fribone/application/application/libraries/Lector_library.php",
+		"/var/www/fribone/application/application/views/tablon/pages/tablon.php",
+		"/var/www/fribone/application/application/models/lector_model.php",
+		"/var/www/fribone/application/application/tests/models/LectorTest.php",
+		"/var/www/fribone/application/application/config/database.php",
+		"/var/www/fribone/application/application/controllers/lector.php",
+		"/var/www/fribone/application/application/tests/libraries/Lector_libraryTest.php",
+		"/var/www/fribone/application/application/controllers/home.php",
+		"/var/www/fribone/application/application/controllers/tablon.php",
+		"/var/www/fribone/application/application/controllers/supermercado.php",
+		"/var/www/fribone/application/application/controllers/fridge.php",
+		"/var/www/fribone/application/application/controllers/codigobarras.php",
+		"/var/www/fribone/application/resources/js/tablon.js",
+		"/var/www/fribone/application/application/tests/database_inflater.sql",
+		"/var/www/fribone/application/application/tests/database_inflater.php",
+		"/home/paraca/Desktop/Fribone/fribone-documentation/cuestion/section-arduino.tex",
+		"/tmp/651_Entorno_default_Recuperado_de_default_5659058337960470820_insert_prod_venta.sql",
+		"/ftp_php/html/web/carrito/application/views/default/handlebars/get_total_carritos-template.php",
+		"/ftp_php/html/web/carrito/application/views/default/handlebars/get_carritos_abiertos_por_dia-template.php",
+		"/var/www/html/info.php",
+		"/home/paraca/Desktop/Tablas_Carrito/TEL_PRODUCTOS_BASE_D.sql",
+		"/home/paraca/Desktop/Tablas sin bulk/Tablas_Carrito (copy)/CAR_SESION_DATOS_CONTACTO.sql",
+		"/home/paraca/Desktop/Tablas sin bulk/Ampliacion_Tablas_Carrito (copy)/CAR_SESION_DATOS_CONTACTO_D.sql",
+		"/home/paraca/Desktop/Tablas_Carrito/A_TABLAS.sql_create",
+		"/ftp_php/html/web/carrito/application/views/default/template/body_content.php",
+		"/ftp_php/html/web/carrito/application/views/default/template/skeleton.php",
+		"/ftp_php/html/web/carrito/application/views/default/pages/home.php",
+		"/ftp_php/html/web/carrito/application/controllers/restful.php",
+		"/ftp_php/html/web/carrito/application/core/MY_Controller.php",
+		"/home/paraca/scripts/montar_ftp.sh",
+		"/ftp_php/html/web/carrito/resources/js/default.js",
+		"/ftp_php/html/web/carrito/resources/js/plugins.js",
+		"/ftp_php/html/web/carrito/application/config/database.php",
+		"/mnt/produccion/dweb/Entornos/telecor/instrucciones.txt",
+		"/ftp/logs/dweb0.err",
+		"/ftp/logs/MiguelCambioPrecios2_01-08-2014.trace",
+		"/home/paraca/Desktop/Tablas_Carrito/TEL_PRODUCTOS_BASE.sql",
+		"/tmp/Comprobacion_productos_para_venta_en_tienda_online_cambios_20140801_1214.txt",
+		"/ftp/logs/MiguelCor_01-08-2014.trace",
+		"/ftp/work/00000117/ImportacionMysql/scripts_import.txt",
+		"/home/paraca/Desktop/Tablas_Carrito/IMPORT_DATOS.sql",
+		"/ftp/work/00000117/ImportacionMysql/A_TABLAS.sql",
+		"/mnt/Usar y Tirar/BW/Busqueda.txt",
+		"/ftp/logs/MiguelCambioPrecios_01-08-2014.trace",
+		"/ftp/logs/00000117/UserSAPImportarCatalogo_resumen_20140801_1003.txt",
+		"/ftp/logs/00000117/UserSAPImportarCatalogo_resumen_20140801_0955.txt",
+		"/ftp/logs/00000117/Comprobacion_productos_para_venta_en_tienda_online_cambios_20140801_0940.txt",
+		"/ftp/logs/00000117/Comprobacion_productos_para_venta_en_tienda_online_cambios_20140801_0956.txt",
+		"/ftp/logs/00000117/UserSAPImportarCatalogo_0-20140801.dat",
+		"/ftp/logs/00000117/UserSAPImportarCatalogo_resumen_20140801_0939.txt",
+		"/var/www/carrito/application/core/MY_Controller.php",
+		"/var/www/carrito/application/controllers/restful.php",
+		"/var/www/carrito/application/template_rederer/get_carritos_abiertos_por_dia-template",
+		"/home/paraca/www/phpmyadmin/examples/create_tables.sql",
+		"/home/paraca/Desktop/Tablas_Carrito/A_TABLAS.sql",
+		"/var/www/carrito/application/logs/log-2014-07-31.php",
+		"/var/www/carrito/index.php",
+		"/mnt/Usar y Tirar/Miguel/LIMPIEZA SAP.txt",
+		"/mnt/Usar y Tirar/Miguel/REFERENCIAS_W_20140731_00.txt",
+		"/mnt/Usar y Tirar/Miguel/SAP/REFERENCIAS_W_20140731_00.txt",
+		"/home/paraca/www/permisos.sh",
+		"/home/paracaidista/apache2/sites-enabled/carrito",
+		"/var/www/carrito/application/config/database.php",
+		"/var/www/carrito/resources/js/plugins.js",
+		"/var/www/carrito/resources/js/default.js",
+		"/var/www/carrito/application/config/config.php",
+		"/mnt/Usar y Tirar/Miguel/DELETE REFERENCIA PRECIOS.sql",
+		"/home/paraca/Desktop/Tablas_Carrito/scripts_import.txt",
+		"/home/paraca/Desktop/Tablas_Carrito/CAR_SESION.sql",
+		"/home/paraca/Desktop/Tablas_Carrito/SAP_REFERENCIAS.sql",
+		"/home/paraca/Desktop/Tablas_Carrito/CAR_SESION_ITEM_D.sql",
+		"/home/paraca/Desktop/Tablas_Carrito/CAR_SESION_DATOS_CONTACTO_D.sql",
+		"/home/paraca/Desktop/Tablas_Carrito/CAR_SESION_ITEM.sql",
+		"/home/paraca/Desktop/Tablas_Carrito/CAR_SESION_D.sql",
+		"/home/paraca/Desktop/Tablas_Carrito/SAP_REFERENCIAS_D.sql",
+		"/home/paraca/Desktop/Tablas_Carrito/CAR_SESION_DIRECCION_D.sql",
+		"/home/paraca/Desktop/Tablas_Carrito/SAP_PRECIOS_D.sql",
+		"/home/paraca/Desktop/UserSAPImportarCatalogo_2-20140731.dat",
+		"/home/paraca/Desktop/Tablas_Carrito/SAP_PRECIOS.sql",
+		"/home/paraca/Desktop/Tablas_Carrito/CAR_SESION_DATOS_CONTACTO.sql",
+		"/home/paraca/Desktop/Tablas_Carrito/CAR_SESION_DIRECCION.sql",
+		"/home/paraca/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/paraca/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/home/paraca/Desktop/Tablas sin bulk/Tablas_Carrito (copy)/Tablas",
+		"/tmp/274_Entorno_default_Recuperado_de_default_3505311628219126107_get_productos_en_tienda.sql",
+		"/ftp/html/mixto/00000117/TelecorApp/catalogoJson.js",
+		"/mnt/Usar y Tirar/EnriqueDesarrollo/Expresion Regular Busqueda Productos En Venta.txt",
+		"/ftp/logs/MiguelPrecios_31-07-2014.trace",
+		"/ftp/html/mixto/estaticos/00000117/sap/REFERENCIAS_W_20140730_00.txt",
+		"/ftp/html/mixto/estaticos/00000117/sap/PRECIOS_W_20140730_00.txt",
+		"/home/paraca/Desktop/Comprobacion_productos_para_venta_en_tienda_online_cambios_20140731_1104.txt",
+		"/home/paraca/Desktop/[ERROR] Comprobacion_productos_para_venta_en_tienda_online_cambios_20140731_1006.txt",
+		"/home/paraca/Desktop/[OK] Comprobacion_productos_para_venta_en_tienda_online_cambios_20140731_1040.txt",
+		"/home/paraca/Desktop/MiguelPrecios_31-07-2014.trace",
+		"/tmp/Comprobacion_productos_para_venta_en_tienda_online_cambios_20140731_1006.txt",
+		"/tmp/2_Entorno_default_Recuperado_de_default_7785908752735223634_contenido_cambios.txt",
+		"/tmp/1_Entorno_default_Recuperado_de_default_5295239240238815226_contenido_resumen.txt",
+		"/tmp/2_Entorno_default_Recuperado_de_default_4888974268804935203_contenido_cambios.txt",
+		"/tmp/1_Entorno_default_Recuperado_de_default_2026085683290841771_contenido_resumen.txt",
+		"/tmp/7_Entorno_default_Recuperado_de_default_5018720691921546018_informe_productos_tienda.txt",
+		"/tmp/13_Entorno_default_Recuperado_de_default_2308509106469349116_informe_producto_desactivado.txt"
+	],
+	"find":
+	{
+		"height": 25.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"http://forum.arduino.cc",
+			";",
+			"40514605",
+			"DELETE FROM",
+			" WHERE EMPRESA = 115;",
+			"CAR_SESION_DATOS_CONTACTO WHERE EMPRESA = 115;\n",
+			" WHERE EMPRESA = 115;",
+			"SELECT COUNT(*) FROM ",
+			"\\'",
+			"11/13','%d/%m/%y'),null,null,'FUNDA WOXTER FASHIO",
+			"RIS</p>',null,null,null,'473','11','17','S',null)",
+			"ndbcluster",
+			"blob",
+			"CAMBIO_PRECIOS.ID_PRECIO[777,777]",
+			"CAMBIO_PRECIOS.ID_PRECIO[776,776]=",
+			"CAMBIO_PRECIOS.ID_PRECIO[776,776]",
+			"CAMBIO_PRECIOS.ID_PRECIO[774,",
+			"CAMBIO_PRECIOS.ID_PRECIO[775,",
+			"CAMBIO_PRECIOS.ID_PRODUCTO_BASE[775",
+			"CAMBIO_PRECIOS.ID_PRODUCTO_BASE[777,777]",
+			" TEL_Importacion_Catalogo_SAP/check_cambio_precios/2\n",
+			" TEL_Importacion_Catalogo_SAP/check_cambio_precios/2\n01-08-2014,10:03:22.653 30 SET_VAR (local) INDICE[-1,-1]",
+			"TEL_Importacion_Catalogo_SAP/check_cambio_precios/2",
+			"CAMBIO_PRECIOS.ID_PRODUCTO_BASE[774,",
+			"CAMBIO_PRECIOS.ID_PRODUCTO_BASE[775,",
+			"CAMBIO_PRECIO.ID_PRODUCTO_BASE[775",
+			"CAMBIO_PRECIO.ID_PRODUCTO_BASE[775,",
+			"CAMBIO_PRECIO.ID_PRODUCTO_BASE[776,",
+			"CAMBIO_PRECIOS.ID_PRECIO",
+			"AMBIO_PRECIOS.ID_PRE",
+			"CAMBIO_PRECIOS.ID_PRECIO",
+			"$data = $this->object_to_array($data);",
+			"POPSETT|ACCESORIO|ROJO|UNIVERSAL|NO APLICA",
+			"POPSETT|ACCESORIO|BLANCO|UNIVERSAL|NO APLICA",
+			"POPSETT|ACCESORIO|ROSA|UNIVERSAL|NO APLICA",
+			"POPSETT|ACCESORIO|NEGRO|UNIVERSAL|NO APLICA",
+			"POPSETT|ACCESORIO|ROJO|UNIVERSAL|NO APLICA",
+			"POPSETT|ACCESORIO|AZUL|UNIVERSAL|NO APLICA",
+			"POPSETT|ACCESORIO|ROJO|UNIVERSAL|NO APLICA",
+			"POPSETT|ACCESORIO|ROSA|UNIVERSAL|NO APLICA",
+			"POPSETT|ACCESORIO|NEGRO|UNIVERSAL|NO APLICA",
+			"30475726",
+			"30474737",
+			"40517558",
+			"40517343",
+			"40517533",
+			"40517483",
+			"40517434",
+			"40517384",
+			"40517574",
+			"40517525",
+			"40517475",
+			"40517426",
+			"40517376",
+			"40517368",
+			"40517517",
+			"40517467",
+			"40517418",
+			"POPSETT|ACCESORIO|AZUL|UNIVERSAL|NO APLICA|",
+			"POPSETT|ACCESORIO|ROJO|UNIVERSAL|NO APLICA",
+			"POPSETT|ACCESORIO|ROSA|UNIVERSAL|NO APLICA",
+			"POPSETT|ACCESORIO|NEGRO|UNIVERSAL|NO APLICA",
+			"40517533",
+			"40517483",
+			"40517384",
+			"30475726",
+			"yyyy-mm-dd hh24:mi:ss",
+			"to_date",
+			"values",
+			"values ('44','7229','1','42067',STR_TO_DATE('12/03/14 12:59:21','%d/%m/%y %T:%i:",
+			"values ('21','7485','1','45563',STR_TO_DATE('12/03/14 17:01:52",
+			"values ('10','7236','2','42080',STR_TO_DATE('06/03/14 ",
+			"%d/%m/%y",
+			"%Y-%m-%d %H:%i:%s",
+			"values ('10','7236','2','42080',STR_TO_DATE('06/03/14 19:54:42','%d/",
+			"('10','7236','2','42080',STR_TO_DATE('06/03/14 19:",
+			"30475726",
+			"30474737",
+			"SMARTPHONE|NEGRO|WIKO RAINBOW|LIBRE|Z002",
+			"30475726",
+			"30474737",
+			"\"e\":\"[\\w\\d\\sáéíóúñ\\.]*\",\"v\":\"[S]\"",
+			"Samsung Galaxy S4 Negro",
+			"\"e\":\"[\\w\\d\\sáéíóúñ]*\",\"v\":\"[S]\"",
+			"\"e\":\"[\\w\\d\\sáéíóú]*\",\"v\":\"[S]\"",
+			"Samsung Galaxy S4 Mini",
+			"\"e\":\"[\\w\\d\\s]*\",\"v\":\"[S]\"",
+			"\"e\":\"\",\"v\":\"S\"",
+			"\"e\":\"[\\w\\d\\s]*\",\"v\":\"[S]\"",
+			"\"e\":\"[\\w\\d\\s]*\",\"v\":\"[SN]\"",
+			"\"e\":\"[\\w\\d\\s]*\",\"v\":\"",
+			"im\"00000117/2012102616363",
+			"\"v\":\"S",
+			"\"v\":\"",
+			"2711302239378",
+			"30223936",
+			"TEL_Importacion_Catalogo_SAP/check_cambio_precios/2",
+			"INDICE[-1,-1]=",
+			"2711302239378",
+			"30223936",
+			"2711302234731",
+			"30223472",
+			"2711404138258",
+			"40413824",
+			"2711310794609",
+			"31079469",
+			" 	31079469",
+			"WIKO|SMARTPHONE|NEGRO|WIKO RAINBOW|LIBRE|Z002",
+			"30475726",
+			"30475727",
+			"30475726",
+			"30474737",
+			"HAY_PRECIOS_PUBLICACIONES",
+			"30470917",
+			"HAY_PRECIOS_PUBLICACIONES",
+			"update sap_precios",
+			"HAY_PRODUCTOS_DE",
+			"20074",
+			"40514605",
+			"20074",
+			"40514605",
+			"2711405146061",
+			"27114051460612711405146061",
+			"2711405146061",
+			"40514605",
+			"30472715",
+			"HAY_PROD",
+			"ESTADO_RESPUESTA"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"%Y-%m-%d %H:%i:%s",
+			"STR_TO_DATE",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "fribone.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 241.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
