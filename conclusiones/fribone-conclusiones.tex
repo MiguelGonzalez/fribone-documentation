@@ -1,16 +1,22 @@
 \chapter{CONCLUSIONES}
 
-Este proyecto ha abordado el diseño y la construcción de un componente hardware apoyado por una plataforma en la nube para el seguimiento del consumo en el hogar, en concreto las compras realizadas en los supermercados. Para ello, se ha utilizado \emph{Arduino Yún} y una serie de componentes en el diseño del prototipo y de distintas tecnologías web para la construcción de la aplicación web.
+Este proyecto ha abordado el diseño y la construcción de un componente hardware apoyado por una plataforma en la nube para el seguimiento del consumo en el hogar, en concreto, las compras realizadas en los supermercados. Para ello, se ha utilizado \emph{Arduino Yún} y una serie de componentes electrónicos con los que se ha creado un prototipo y además, a través de distintas tecnologías web, se ha diseñado una aplicación web.
 
 La elección de este proyecto surgió de la curiosidad acerca de \emph{Arduino}, del creciente entusiasmo en cuantificar todo lo que se pueda y de la multitud de aplicaciones que se utilizan para llevar el control de los gastos en el hogar.
 
+Este proyecto se comenzó en Marzo del 2014 y se ha desarrollado a la par que la finalización del cuarto curso de \emph{Grado en Ing. de Sistemas de Información} y un trabajo a jornada completa en \emph{Informática ECI.}. Se ha finalizado en Septiembre del 2014.
+
+A continuación se muestran los distintos pasos o fases que se han realizado:
+
 \section{Primer paso}
 
-El primer paso en el proyecto fue hacerse con un \emph{Arduino} para empezar a jugar con él y familiarizarse con su entorno de programación. Simultáneamente se adquirió un lector de código de barras con conector \emph{USB HID}.
+El primer paso en el proyecto fue hacerse con un \emph{Arduino} para empezar a jugar con él y familiarizarse con su entorno de programación. Simultáneamente se adquirió un lector de código de barras con conector \emph{USB HID}, un lector de códigos RFID y una pantalla \emph{TFT}.
 
 La versión de \emph{Arduino} elegida fue la \emph{UNO} debido a que su precio económico y a la amplia documentación que hay sobre la placa. El primer problema que se tuvo fue la falta de conexión \emph{USB} de la placa, se resolvió adquiriendo una \emph{Shield USB}. El segundo problema vino por la falta de conexión \emph{WiFi}, se intentó resolver adquiriendo una \emph{Shield WiFi} no oficial, pero no se logró hacer que funcionara.
 
-Con estos problemas el segundo paso consistió en investigar y en conocer \emph{Arduino Yún}, una placa \emph{Arduino} que resuelve estos problemas ya que dispone de un puerto \emph{USB} y de un microprocesador con \emph{Linux} y conexión \emph{WiFi}. Con todos los componentes adecuados se diseñó el primer software para el escaneo de códigos de barras, el cual se guardaba a través de \emph{Internet} en un servidor.
+Con estos problemas se optó por investigar \emph{Arduino Yún}, una placa \emph{Arduino} que resuelve estos problemas ya que dispone de un puerto \emph{USB} y de un microprocesador con \emph{Linux} y conexión \emph{WiFi}, por lo que se optó por adquirir este componente.
+
+Con todos los componentes adecuados se diseñó el primer software para el escaneo de códigos de barras y de códigos RFID, así como una interfaz para mostrar los códigos en la pantalla \emph{TFT}.
 
 \section{Segundo paso}
 
@@ -30,6 +36,15 @@ El segundo paso consistió en desarrollar la aplicación servidor utilizando par
 
 A continuación, con las primeras versiones de la aplicación servidor, se fue realizando el diseño de la página web utilizando para ello \emph{Bootstrap} y algunas librerías \emph{JavaScript} como; \emph{JQuery}, \emph{Director}, \emph{Handlebars}, etc.
 
+Se ha realizado un diseño conocido como Single Page, es decir, la página web solamente se carga la primera vez que se accede y para las demás acciones se utiliza \emph{AJAX} para traer la información y un sistema de plantillas para repintar partes de la página con dicho contenido.
+
 \section{Cuarto paso}
 
+En el cuarto paso se ha procedido a realizar la integración entre el componente hardware y la aplicación servidor. Para ello se han utilizado dos puntos de vista:
 
+\begin{itemize}
+    \item Componente Hardware: A través de la librería \emph{HttpClient} realiza una serie de peticiones a la \emph{API} expuesta por la aplicación servidor.
+    \item Aplicación Servidor: Expone una serie de métodos públicos (\emph{API}) para poder realizar peticiones desde el exterior.
+\end{itemize}
+
+Para facilitar el manejo del componente hardware al usuario se ha procedido a realizar un menú sencillo a través de cuatro pulsadores (\emph{botones}) y de la pantalla \emph{TFT}. A través de este menú se pretende mostrar las distintas opciones que se pueden realizar con el aparato: introducir productos, sacar productos, etc.
