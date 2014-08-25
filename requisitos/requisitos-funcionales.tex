@@ -2,32 +2,144 @@
 
 Los requisitos funcionales se expondrán en forma de casos de uso.
 
-\subsection{Caso de uso Escaneo de un producto}
+\subsection{Caso de Uso: Alta cuenta usuario}
 
-\textbf{Actor principal.} Usuario.
+    \textbf{Actor principal.} Usuario.
 
-\textbf{Actores de apoyo.} Ninguno.
+    \textbf{Actores de apoyo.} Ninguno.
 
-\textbf{Precondiciones.} El producto debe tener un código de barras legible. El componente hardware debe estar configurado y operativo.
+    \textbf{Precondiciones.} El usuario debe acceder a la página web a través de un navegador.
 
-\textbf{Postcondiciones.} Ninguna.
+    \textbf{Postcondiciones.} Ninguna.
 
-\textbf{Escenario principal de éxito.} El sistema detecta correctamente el código de barras y lo transmite al servidor vía WiFi.
+    \textbf{Escenario principal de éxito.} El usuario se da de alta en el sistema a través de un formulario de registro.
 
-\textbf{Escenario alternativo.} El sistema no reconoce el código de barras y se debe introducir a mano en el sistema.
+    \textbf{Escenario alternativo.} El usuario introduce valores no válidos en el formulario y el sistema le aviso de ellos para que sean corregidos.
 
-\textbf{Cómo probarlo.} El usuario deberá escanear un producto y comprobar que aparece en la aplicación cliente.
+    \textbf{Cómo probarlo.} Una vez el usuario se ha registrado accede al panel de usuario a utilizando para ello el formulario de logueo y sus credenciales.
 
-\subsection{Caso de uso Obtener información del frigorífico}
+\subsection{Caso de Uso: Alta de un producto}
 
-\textbf{Actor principal.} Usuario.
+    \textbf{Actor principal.} Usuario.
 
-\textbf{Actores de apoyo.} Ninguno.
+    \textbf{Actores de apoyo.} Ninguno.
 
-\textbf{Precondiciones.} Tener acceso a la aplicación cliente y estar logueados en el sistema.
+    \textbf{Precondiciones.} El usuario debe estar logueado en el sistema.
 
-\textbf{Postcondiciones.} Ninguna.
+    \textbf{Postcondiciones.} Ninguna.
 
-\textbf{Escenario principal de éxito.} El sistema recupera la información de productos del servidor y nos muestra la información.
+    \textbf{Escenario principal de éxito.} El usuario accede a un supermercado en la zona de \emph{Supermercados} y da de alta un producto rellenando para ello todos los datos requeridos.
 
-\textbf{Cómo probarlo.} El usuario se identifica en la aplicación y debe ser capaz de ver la información del frigorífico.
+    \textbf{Escenario alternativo.} El sistema le avisa de que hay datos mal introducidos que necesitan ser corregidos.
+
+    \textbf{Cómo probarlo.} El nuevo producto debe aparecer en la web para el supermercado elegido.
+
+\subsection{Caso de Uso: Añadir un producto al frigorífico vía web}
+
+    \textbf{Actor principal.} Usuario.
+
+    \textbf{Actores de apoyo.} Ninguno.
+
+    \textbf{Precondiciones.} El usuario debe estar logueado en el sistema y tener creado un frigorífico.
+
+    \textbf{Postcondiciones.} Ninguna.
+
+    \textbf{Escenario principal de éxito.} El usuario accede a uno de sus frigoríficos, clica en el botón para añadir un producto e introduce su código de barras seleccionando finalmente el producto a introducir.
+
+    \textbf{Escenario alternativo.} El sistema no encuentra el producto con el código de barras seleccionado, se debe añadir el producto al supermercado que corresponde y volver a intentar.
+
+    \textbf{Cómo probarlo.} El producto añadido debe aparecer en el frigorífico.
+
+\subsection{Caso de Uso: Vincular el lector a la cuenta de un usuario}
+
+    \textbf{Actor principal.} Usuario.
+
+    \textbf{Actores de apoyo.} Ninguno.
+
+    \textbf{Precondiciones.} El usuario debe estar logueado en el sistema y tener creado un lector sin vincular. El lector debe estar sin vincular y encendido.
+
+    \textbf{Postcondiciones.} Ninguna.
+
+    \textbf{Escenario principal de éxito.} El usuario genera dos códigos de barras de vinculación, los escanea con el lector, una vez termina la vinculación debe mostrar la pantalla de opciones (Introducir un producto, sacar un producto, desvincular el lector...).
+
+    \textbf{Escenario alternativo.} Se produce un error al iniciar la vinculación y el lector lo indica con una pantalla de Error y un mensaje de volver a intentar.
+
+    \textbf{Cómo probarlo.} Se pueden acceder a las opciones de funcionamiento del lector, desapareciendo así la pantalla de vinculación.
+
+\subsection{Caso de uso: Seleccionar un frigorífico en el lector}
+
+    \textbf{Actor principal.} Usuario.
+
+    \textbf{Actores de apoyo.} Ninguno.
+
+    \textbf{Precondiciones.} El componente hardware debe estar configurado y operativo.
+
+    \textbf{Postcondiciones.} Ninguna.
+
+    \textbf{Escenario principal de éxito.} Se accede a la opción de menú para seleccionar un frigorífico, aparece un listado de frigoríficos y se selecciona el deseado.
+
+    \textbf{Escenario alternativo.} El usuario no tiene ningún frigorífico creado por lo que se da un aviso para que primero se añada uno.
+
+    \textbf{Cómo probarlo.} Al escanear un producto para añadirlo a la aplicación web este aparece en el frigorífico seleccionado.
+
+\subsection{Caso de uso: Añadir un producto al frigorífico vía lector}
+
+    \textbf{Actor principal.} Usuario.
+
+    \textbf{Actores de apoyo.} Ninguno.
+
+    \textbf{Precondiciones.} El producto debe tener un código de barras legible. El componente hardware debe estar configurado y operativo.
+
+    \textbf{Postcondiciones.} Ninguna.
+
+    \textbf{Escenario principal de éxito.} Se accede a la opción de menú para introducir un producto en el frigorífico, se escanea el código de barras y la información se envía vía WiFi al servidor.
+
+    \textbf{Escenario alternativo.} El sistema no reconoce el código de barras (ilegible) por lo que se debe añadir vía web el producto. El producto no está en el servidor por lo que se debe crear primero.
+
+    \textbf{Cómo probarlo.} Al acceder al frigorífico del usuario vía web se comprueba que se ha añadido el producto al frigorífico.
+
+\subsection{Caso de uso: Sacar un producto del frigorífico vía lector}
+
+    \textbf{Actor principal.} Usuario.
+
+    \textbf{Actores de apoyo.} Ninguno.
+
+    \textbf{Precondiciones.} El producto debe tener un código de barras legible. El componente hardware debe estar configurado y operativo.
+
+    \textbf{Postcondiciones.} Ninguna.
+
+    \textbf{Escenario principal de éxito.} Se accede a la opción de menú para sacar un producto del el frigorífico, se escanea el código de barras y la información se envía vía WiFi al servidor.
+
+    \textbf{Escenario alternativo.} El sistema no reconoce el código de barras (ilegible) por lo que se debe añadir vía web el producto. El producto no está en el frigorífico por lo que se muestra un aviso.
+
+    \textbf{Cómo probarlo.} Al acceder al frigorífico del usuario vía web se comprueba que el producto no aparece.
+
+\subsection{Caso de uso: Obtener información del frigorífico}
+
+    \textbf{Actor principal.} Usuario.
+
+    \textbf{Actores de apoyo.} Ninguno.
+
+    \textbf{Precondiciones.} Tener acceso a la aplicación cliente y estar logueados en el sistema.
+
+    \textbf{Postcondiciones.} Ninguna.
+
+    \textbf{Escenario principal de éxito.} El sistema recupera la información de productos del servidor y nos muestra la información.
+
+    \textbf{Cómo probarlo.} El usuario se identifica en la aplicación y debe ser capaz de ver la información del frigorífico.
+
+\subsection{Caso de uso: Desvincular el lector}
+
+    \textbf{Actor principal.} Usuario.
+
+    \textbf{Actores de apoyo.} Ninguno.
+
+    \textbf{Precondiciones.} El componente hardware debe estar configurado y operativo.
+
+    \textbf{Postcondiciones.} Ninguna.
+
+    \textbf{Escenario principal de éxito.} Se accede a la opción de menú para desvincular el lector y se confirma la opción.
+
+    \textbf{Escenario alternativo.} Ninguno.
+
+    \textbf{Cómo probarlo.} El lector muestra la pantalla de vinculación y desde la página web el lector creado aparece para ser vinculado.
