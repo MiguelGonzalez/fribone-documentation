@@ -56,7 +56,7 @@ Existen una gran variedad de placas Arduino, tanto oficiales como no oficiales; 
     \caption{Frontal arduino}\label{fig:arduino-yun-front}
 \end{figure}
 
-La ventaja principal, y por la que me he decantado por comprar esta placa, es la combinación de Arduino (\emph{ATmega 32U4}) con un sistema operativo Linux (\emph{AR9331}) con conectividad Wi-Fi. Esto permite utilizar todo el potencial de Arduino en el desarrollo de nuestro hardware y obtener todo el potencial de una máquina Linux, a través del sistema operativo \emph{Linino}, para ejecutar comandos, scripts, aplicaciones y cualquier cosa que se nos ocurra.
+La ventaja principal, y por la que me he decantado por comprar esta placa, es la combinación de Arduino (\emph{microcontrolador ATmega 32U4}) con un sistema operativo Linux (\emph{microprocesador AR9331}) con conectividad Wi-Fi. Esto permite utilizar todo el potencial de Arduino en el desarrollo de nuestro hardware y obtener todo el potencial de una máquina Linux, a través del sistema operativo \emph{Linino}, para ejecutar comandos, scripts, aplicaciones y cualquier cosa que se nos ocurra.
 
 \begin{figure}[h!]
     \centering
@@ -64,7 +64,7 @@ La ventaja principal, y por la que me he decantado por comprar esta placa, es la
     \caption{Componentes de arduino}\label{fig:arduino-parts}
 \end{figure}
 
-La comunicación entre Arduino y Linux se realiza a través de la librería \emph{Bridge}, facilitando la comunicación entre los dos procesadores. La librería da la habilidad a Arduino y correr scripts, comunicarse con interfaces de red y recibir información del procesador \emph{AR9331}. El Host USB, las interfaces de red y el lector de tarjetas de memoria están conectados al procesador \emph{AR9331} manejado por Linux, la librería Bridge también permite a Arduino acceder a estos periferios.
+La comunicación entre Arduino y Linux se realiza a través de la librería \emph{Bridge}, facilitando el intercambio de información y órdenes entre ambos micros. La librería da el potencial al microcontrolador de ejecutar scripts, comunicarse con interfaces de red, tener acceso a una memoria compartida entre el microprocesador y el microcontrolador, acceder al sistema de ficheros...
 
 Las características de \emph{Arduino Yún} son las siguientes:
 
