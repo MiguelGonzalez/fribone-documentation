@@ -34,7 +34,7 @@
 
     \subsubsection{Extendiendo el core de CodeIgniter}
 
-    CodeIgniter al cargarse intenta buscar los sisguientes ficheros de sistema en la carpeta \emph{application/core}, esta funcionalidad permite sobreescribir algunas de las funcionalidades para ampliarlas.
+    CodeIgniter al cargarse intenta buscar los siguientes ficheros de sistema en la carpeta \emph{application/core}, esta funcionalidad permite sobreescribir algunas de las funcionalidades para ampliarlas.
 
     En el proyecto se han creado dos nuevos controladores para ampliar la funcionalidad del controlador por defecto de CodeIgniter:
 
@@ -50,7 +50,7 @@
 
         \item MY\_Controller\_User
 
-        Extiende de \emph{MY\_Controller} y únicamente se encarga de validar en el constructor que el usuario está logueado en el sistema, en caso de no estarlo, redirije a la Home pública.
+        Extiende de \emph{MY\_Controller} y únicamente se encarga de validar en el constructor que el usuario está logueado en el sistema, en caso de no estarlo, redirige a la Home pública.
     \end{itemize}
 
     \subsubsection{Esquema de controladores}
@@ -90,14 +90,14 @@ Controladores de API \emph{RESTful}
 
 La única restricción que se ha encontrado en CodeIgniter para hacer tests unitarios es que los controladores no se pueden cargar para hacerles pruebas unitarias. Por ello, toda la funcionalidad compleja se traslada a una librería específica la cual tiene sus tests unitarios.
 
-De esta manera el controlador, no necesita de tests unitarios ya que actua como mediador entre el cliente y las librerías.
+De esta manera el controlador, no necesita de tests unitarios ya que actúa como mediador entre el cliente y las librerías.
 
 Se han implementado las siguientes librerías en el sistema:
 
     \begin{itemize}
         \item Login\_auth\_library.php
 
-            Esta librería es la más crucial a la hora de aportar seguridad ya que se encarga de validar los datos de un usuario cuando intenta acceder al sistema; además de controlar el registro de los usuarios, la recuperación de contraseñas y la opción para salir de una cuenta; destruyéndo la sesión del usuario.
+            Esta librería es la más crucial a la hora de aportar seguridad ya que se encarga de validar los datos de un usuario cuando intenta acceder al sistema; además de controlar el registro de los usuarios, la recuperación de contraseñas y la opción para salir de una cuenta; destruyendo la sesión del usuario.
 
             Se ha utilizado la función nativa \emph{password\_hash} que ofrece \emph{PHP} para crear el Hash de la contraseña que guardaremos en base de datos. Esta función solo funciona en versiones de \emph{PHP 5.5.0} o superiores, si es inferior se utiliza la función \emph{crypt}.
 
@@ -156,7 +156,7 @@ private function get_password_hash($password) {
 
         \item Fridge\_library.php
 
-            Esta librería, a través del modelo fridge, permite la creación de frigoríficos a un usuario, asi como añadir productos a la compra utilizando para ello la librería \emph{Compra\_library.php} y el modelo \emph{fridge\_model}.
+            Esta librería, a través del modelo fridge, permite la creación de frigoríficos a un usuario, así como añadir productos a la compra utilizando para ello la librería \emph{Compra\_library.php} y el modelo \emph{fridge\_model}.
 
         \item Compra\_library.php
 
@@ -206,4 +206,4 @@ private function get_total_compra($id_compra) {
 
         Así, permiten recuperar una o varios registros en base de datos, modificar información o incluso realizar un borrado lógico.
 
-        Un borrado lógico es actualizar un registro para marcarlo como borrado, sin llegar a borralo físicamente de la base de datos, esto es útil para poder recuperar información (análisis de datos) en un futuro, o incluso, poder recuperar registros en un futuro.
+        Un borrado lógico es actualizar un registro para marcarlo como borrado, sin llegar a borrarlo físicamente de la base de datos, esto es útil para poder recuperar información (análisis de datos) en un futuro, o incluso, poder recuperar registros en un futuro.
