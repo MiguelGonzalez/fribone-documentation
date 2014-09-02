@@ -10,7 +10,7 @@ A continuación se va a explicar brevemente el hardware \emph{Arduino}, \emph{Ar
 
 El hardware consiste en una placa con un microcontrolador \emph{Atmel AVR} y puertos de entrada/salida. Los microcontroladores más usados son el \emph{Atmega168}, \emph{Atmega328}, \emph{Atmega1280}, \emph{ATmega8} por su sencillez y bajo coste que permiten el desarrollo de múltiples diseños.
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[keepaspectratio,width=0.6\textwidth]{arduino_uno_test.eps}
     \caption{Arduino uno}\label{fig:arduino_uno_test}
@@ -19,7 +19,7 @@ El hardware consiste en una placa con un microcontrolador \emph{Atmel AVR} y pue
 
 Por otro lado el software consiste en un entorno de desarrollo que implementa el lenguaje de programación \emph{Wiring} y el cargador de arranque que es ejecutado en la placa.
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[keepaspectratio,width=0.6\textwidth]{arduino-ide.eps}
     \caption{IDE Arduino}\label{fig:arduino-ide}
@@ -50,7 +50,7 @@ A continuación se muestra un código sencillo para hacer parpadear un diodo led
 
 Existen una gran variedad de placas Arduino, tanto oficiales como no oficiales; Arduino uno, Arduino Mega, Arduino Leonardo... Y una de las más recientes, la cual usaré en este proyecto, es la placa \emph{Arduino Yún}.
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[keepaspectratio,width=0.6\textwidth]{arduino_yun_front.eps}
     \caption{Frontal arduino}\label{fig:arduino-yun-front}
@@ -58,7 +58,7 @@ Existen una gran variedad de placas Arduino, tanto oficiales como no oficiales; 
 
 La ventaja principal, y por la que me he decantado por comprar esta placa, es la combinación de Arduino (\emph{microcontrolador ATmega 32U4}) con un sistema operativo Linux (\emph{microprocesador AR9331}) con conectividad WiFi. Esto permite utilizar todo el potencial de Arduino en el desarrollo de nuestro hardware y obtener todo el potencial de una máquina Linux, a través del sistema operativo \emph{Linino}, para ejecutar comandos, scripts, aplicaciones y cualquier cosa que se nos ocurra.
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[keepaspectratio,width=0.6\textwidth]{arduino_parts.eps}
     \caption{Componentes de arduino}\label{fig:arduino-parts}
@@ -106,7 +106,7 @@ Flash Memory & 16 MB \\ \hline
 
 Uno de los componentes para dotar de comunicación a nuestra placa Arduino es utilizar una pantalla TFT. Existen variedad de pantallas TFT; diferentes dimensiones, con soporte táctil, mayor rapidez de refresco... Para el proyecto he optado por comprar la oficial de Arduino:
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[keepaspectratio,width=0.6\textwidth]{pantalla_tft_front.eps}
     \caption{Pantalla TFT}\label{fig:arduino-tft-front}
@@ -145,7 +145,7 @@ A través de la librería \emph{TFT} se pueden dibujar elementos en la pantalla 
 
 A continuación se muestra una captura de como se visualiza el dibujo en la pantalla:
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[keepaspectratio,width=0.4\textwidth]{tft_circulo_cuadrado.eps}
     \caption{TFT - Dibujando}\label{fig:tft_circulo_cuadrado}
@@ -174,7 +174,7 @@ En cambio, para cargar una imagen desde la tarjeta de memoria y mostrarla en la 
 
 A continuación se muestra una captura de como se visualiza la imagen en la pantalla:
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[keepaspectratio,width=0.4\textwidth]{tft_f1.eps}
     \caption{TFT - Imagen}\label{fig:tft_f1}
@@ -245,7 +245,7 @@ boolean leerYProcesarEtiquetaRFID() {
 
 Además de utilizar como método de entrada un lector \emph{RFID} se ha utilizado otro método tradicional, el lector de código de barras. Para ello se ha buscado un lector que sea \emph{USB HID}, es decir, que no necesite la instalación de drivers para funcionar.
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[keepaspectratio,width=0.4\textwidth]{lector_codigo_barras.png}
     \caption{Lector de código de barras}\label{fig:lector_codigo_barras}

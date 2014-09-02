@@ -2,7 +2,7 @@
 
 El lector cuenta con una pequeña \emph{pantalla TFT} y unos pocos botones para su manejo. La primera opción que se da al lector es su vinculación con la cuenta del usuario y para ello se muestra el siguiente aviso en la \emph{pantalla TFT}:
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[keepaspectratio,width=0.5\textwidth]{lector_vincular_lector.png}
     \caption{Vincular lector}\label{fig:lector_vincular_lector}
@@ -10,7 +10,7 @@ El lector cuenta con una pequeña \emph{pantalla TFT} y unos pocos botones para 
 
 Una vez se ha vinculado, escaneando para ello los dos códigos de barras generados por la aplicación web, se muestra la siguiente pantalla con las opciones disponibles:
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[keepaspectratio,width=0.5\textwidth]{lector_home.png}
     \caption{Pantalla de inicio del lector}\label{fig:lector_home}
@@ -18,15 +18,13 @@ Una vez se ha vinculado, escaneando para ello los dos códigos de barras generad
 
 Para acceder a cada opción de menú hay que pulsar cada botón correspondiente; superior para listar los frigoríficos, inferior para desvincular el producto, y laterales para añadir o o quitar productos del frigorífico.
 
-Al acceder a cada opción de menú se muestra una pantalla diferente, con una opción para \emph{Volver} y opcionalmente alguna otra u otras opciones:
-
 \begin{itemize}
 
     \item Selección del frigorífico activo
 
         Esta opción de menú permite elegir el frigorífico sobre el que se realizarán las acciones (entrada / salida) de productos.
 
-        \begin{figure}[h!]
+        \begin{figure}[H]
             \centering
             \includegraphics[keepaspectratio,width=0.5\textwidth]{lector_seleccion_frigo.png}
             \caption{Selector de frigoríficos}\label{fig:lector_seleccion_frigo}
@@ -37,7 +35,7 @@ Al acceder a cada opción de menú se muestra una pantalla diferente, con una op
 
         En el caso de no contar con frigoríficos se muestra el siguiente mensaje en pantalla:
 
-        \begin{figure}[h!]
+        \begin{figure}[H]
             \centering
             \includegraphics[keepaspectratio,width=0.5\textwidth]{lector_no_tiene_frigos.png}
             \caption{No dispone de frigoríficos}\label{fig:lector_no_tiene_frigos}
@@ -47,7 +45,7 @@ Al acceder a cada opción de menú se muestra una pantalla diferente, con una op
 
         Para introducir productos al frigorífico se selecciona la opción de menú \emph{Añadir productos al carrito}, donde se activará la lectura de productos por \emph{código de barras} o a través del \emph{lector RFID}. En la pantalla se muestra la siguiente información:
 
-        \begin{figure}[h!]
+        \begin{figure}[H]
             \centering
             \includegraphics[keepaspectratio,width=0.5\textwidth]{lector_entrar_productos.png}
             \caption{Entrar productos en el frigorífico}\label{fig:lector_entrar_productos}
@@ -61,7 +59,7 @@ Al acceder a cada opción de menú se muestra una pantalla diferente, con una op
 
         Para sacar productos del frigorífico hay que seleccionar la opción de menú  \emph{Sacar productos}, activándose la lectura de productos por \emph{código de barras} o a través del \emph{lector RFID}.
 
-        \begin{figure}[h!]
+        \begin{figure}[H]
             \centering
             \includegraphics[keepaspectratio,width=0.5\textwidth]{lector_sacar_productos.png}
             \caption{Sacar productos del frigorífico}\label{fig:lector_sacar_productos}
@@ -75,7 +73,7 @@ Al acceder a cada opción de menú se muestra una pantalla diferente, con una op
 
         Antes de iniciar la desvinculación se muestra una pantalla de confirmación al usuario, debiendo pulsar el botón inferior para \emph{Aceptar} la opción:
 
-        \begin{figure}[h!]
+        \begin{figure}[H]
             \centering
             \includegraphics[keepaspectratio,width=0.5\textwidth]{lector_desvincular.png}
             \caption{Confirmar desvincular lector}\label{fig:lector_desvincular}
@@ -83,7 +81,7 @@ Al acceder a cada opción de menú se muestra una pantalla diferente, con una op
 
         Una vez se confirma, se lanza la petición al servidor y se procede a eliminar la clave pública, una vez desvinculado se muestra la pantalla para volver a iniciar la vinculación del lector:
 
-        \begin{figure}[h!]
+        \begin{figure}[H]
             \centering
             \includegraphics[keepaspectratio,width=0.5\textwidth]{lector_vincular_lector.png}
             \caption{Vincular lector}\label{fig:lector_vincular_lector}
