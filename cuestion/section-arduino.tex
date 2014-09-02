@@ -2,9 +2,9 @@
 
 Una buena definición de lo que es Arduino lo da la Wikipedia; <<Arduino es una plataforma de hardware libre, basada en una placa con un microcontrolador y un entorno de desarrollo, diseñada para facilitar el uso de la electrónica en proyectos multidisciplinares.>>.
 
-Para este proyecto de fin de grado se va a utilizar \emph{Arduino} para desarrollar el hardware que permita la lectura de códigos de barras de los productos. Para ello se va a contar con una placa \emph{Arduino Yún} y distintos componentes como una pantalla TFT, un lector de código de barras y diversos componentes como resistencias y pulsadores.
+Para este proyecto de fin de grado se va a utilizar \emph{Arduino} para desarrollar el hardware que permita la lectura de códigos de barras de los productos. Para ello se va a contar con una placa \emph{Arduino Yún} y distintos componentes como una pantalla TFT, un lector de código de barras, resistencias, pulsadores, etc.
 
-A continuación se va a explicar brevemente el hardware \emph{Arduino}, \emph{Arduino Yún} y una pantalla TFT desarrollada para \emph{Arduino}.
+A continuación se va a explicar brevemente el hardware \emph{Arduino}, \emph{Arduino Yún}, una pantalla TFT desarrollada para \emph{Arduino}, un lector RFID y un lector de código de barras.
 
 \subsection{Hardware}
 
@@ -151,7 +151,7 @@ A continuación se muestra una captura de como se visualiza el dibujo en la pant
     \caption{TFT - Dibujando}\label{fig:tft_circulo_cuadrado}
 \end{figure}
 
-En cambio, para cargar una imagen desde la tarjeta de memoria y mostrarla en la pantalla TFT, primero tenemos que esperar a que la memoria SD esté inicializada y a continuación, leer la imagen y renderizarla en pantalla:
+En cambio, para cargar una imagen desde la tarjeta de memoria y mostrarla en la pantalla TFT, primero se tiene queesperar a que la memoria SD esté inicializada y a continuación, leer la imagen y renderizarla en pantalla:
 
 \begin{lstlisting}
     ...
@@ -197,7 +197,7 @@ El lector \emph{RFID} es uno de los componentes empleados para poder escanear pr
     \item Reception range: 30mm~50mm
 \end{itemize}
 
-El código para trabajar con el lector \emph{RFID} es muy sencillo, la única ''complicación'' es tener que utilizar la librería \emph{SoftwareSerial} para simular dos pintes como puerto serie.
+El código para trabajar con el lector \emph{RFID} es muy sencillo, la única ''complicación'' es tener que utilizar la librería \emph{SoftwareSerial} para simular dos pines como puerto serie (ya que \emph{Arduino Yún} tiene reservados los pines 0 y 1 de puerto serie para la comunicación con Linux a través de la librería bridge).
 
 No se pueden utilizar los pines dedicados de puerto serie (\emph{0 y 1}) ya que \emph{Arduino Yún} los utiliza para la comunicación entre el microcontrolador \emph{ATmega32U4} y el microprocesador \emph{Atheros AR9331} a través de la librería \emph{Bridge}.
 

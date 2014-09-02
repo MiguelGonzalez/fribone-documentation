@@ -91,11 +91,11 @@ Con esta configuración Linux es capaz de cargar el dispositivo USB, pero, si se
             \end{itemize}
     \end{itemize}
 
-Una vez actualizado la versión de \emph{OpenWrt-Yun} siguiendo las instrucciones de la página de Arduino (\emph{http://arduino.cc/en/Tutorial/YunSysupgrade}) solamente tenemos que instalar la librería USB HID por SSH (ya que sigue sin venir por defecto):
+Una vez actualizado la versión de \emph{OpenWrt-Yun} siguiendo las instrucciones de la página de Arduino (\emph{http://arduino.cc/en/Tutorial/YunSysupgrade}) solamente se tiene que instalar la librería USB HID por SSH (ya que sigue sin venir por defecto):
 
     \begin{lstlisting}
 opkg update
 opkg install kmod-usb-hid
     \end{lstlisting}
 
-Y nos funcionará el lector de códigos de barras USB sin ningún problema, aunque se desenchufe y se vuelva a enchufar.
+Y automáticamente detectará el lector de códigos de barras USB sin ningún problema, aunque se desenchufe y se vuelva a enchufar.

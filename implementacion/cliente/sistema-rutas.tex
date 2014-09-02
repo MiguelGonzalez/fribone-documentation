@@ -2,11 +2,11 @@
 
 La navegación en la aplicación web se realiza a través de un sistema de rutas utilizando para ello la librería JavaScript \emph{Director}. Esta librería funciona tanto desde lado cliente como desde el lado servidor con \emph{Node.js}, de hecho, forma parte del framework \emph{flatiron} para desarrollo web utilizando como tecnología \emph{Node.js}.
 
-Con \emph{Director} podemos definir un sistema de rutas, y de rutas anidadas, que permiten ejecutar una (o varias) funciones al encontrarnos sobre ella.
+Con \emph{Director} se puede definir un sistema de rutas, y de rutas anidadas, que permitan ejecutar una (o varias) funciones al encontrarse sobre ella.
 
-Una vez se carga la página web lo primero que realizamos es la creación de un objeto del tipo \emph{Router}, el cual nos lo da la librería. El objeto \emph{Router} recibe en su constructor el sistema de rutas, de esta manera, se encarga automáticamente de llamar a las funciones que concuerden con la ruta que coincida con la dirección web del navegador. También puede recibir otros parámetros opcionales de configuración, en nuestro caso le hemos indicado que utilice la \emph{HTML5 History API} en lugar del sistema de Hashes que emplea por defecto.
+Una vez se carga la página web lo primero que se debe realizar es la creación de un objeto del tipo \emph{Router}, el cual ofrece la librería. El objeto \emph{Router} recibe en su constructor el sistema de rutas, de esta manera, se encarga automáticamente de llamar a las funciones que concuerden con la ruta que coincida con la dirección web del navegador. También puede recibir otros parámetros opcionales de configuración, en nuestro caso le hemos indicado que utilice la \emph{HTML5 History API} en lugar del sistema de Hashes que emplea por defecto.
 
-El objeto \emph{Router} también tiene un método para indicarle a que zona queremos navegar, para ello se llama a \emph{setRoute} pasando como parámetro la \emph{URI}. El objeto \emph{Router} se encargará de modificar la \emph{URI} y de llamar a las funciones que se hayan definido para dicha ruta.
+El objeto \emph{Router} también tiene un método para indicarle a que zona se quiere navegar, para ello se llama a \emph{setRoute} pasando como parámetro la \emph{URI}. El objeto \emph{Router} se encargará de modificar la \emph{URI} y de llamar a las funciones que se hayan definido para dicha ruta.
 
 A continuación se muestra el sistema de rutas que se ha definido para el portal privado del usuario:
 

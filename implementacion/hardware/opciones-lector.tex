@@ -24,7 +24,7 @@ Al acceder a cada opción de menú se muestra una pantalla diferente, con una op
 
     \item Selección del frigorífico activo
 
-        Esta opción de menú nos permitirá elegir el frigorífico sobre el que se realizarán las acciones (entrada / salida) de productos.
+        Esta opción de menú permite elegir el frigorífico sobre el que se realizarán las acciones (entrada / salida) de productos.
 
         \begin{figure}[h!]
             \centering
@@ -33,7 +33,7 @@ Al acceder a cada opción de menú se muestra una pantalla diferente, con una op
         \end{figure}
 
 
-        A través del botón inferior podemos ir moviéndonos entre los frigoríficos que dispone el usuario, para ello se han traído a través de una petición \emph{RESTful}. Una vez nos encontramos sobre el frigorífico que queremos dejar configurado basta con pulsar en la tecla \emph{Volver}.
+        Pulsando el botón inferior se puede uno desplazar entre los frigoríficos que los cuales se disponen, para ello se han traído a través de una petición \emph{RESTful}. Una vez se está sobre el frigorífico que se quiere dejar configurado, basta con pulsar en la tecla \emph{Volver} para que el lector almacene dicho frigorífico como activo.
 
         En el caso de no contar con frigoríficos se muestra el siguiente mensaje en pantalla:
 
@@ -45,7 +45,7 @@ Al acceder a cada opción de menú se muestra una pantalla diferente, con una op
 
     \item Modo entrada de productos
 
-        Para introducir productos al frigorífico seleccionamos la opción de menú para \emph{Añadir productos al carrito}, donde se activará la lectura de productos por \emph{código de barras} o a través del \emph{lector RFID}. En la pantalla se muestra la siguiente información:
+        Para introducir productos al frigorífico se selecciona la opción de menú \emph{Añadir productos al carrito}, donde se activará la lectura de productos por \emph{código de barras} o a través del \emph{lector RFID}. En la pantalla se muestra la siguiente información:
 
         \begin{figure}[h!]
             \centering
@@ -59,7 +59,7 @@ Al acceder a cada opción de menú se muestra una pantalla diferente, con una op
 
     \item Modo salida de productos
 
-        Para sacar productos del frigorífico nos colocaremos en esta opción del menú el cual activará la lectura de productos por \emph{código de barras} o a través del \emph{lector RFID}.
+        Para sacar productos del frigorífico hay que seleccionar la opción de menú  \emph{Sacar productos}, activándose la lectura de productos por \emph{código de barras} o a través del \emph{lector RFID}.
 
         \begin{figure}[h!]
             \centering
@@ -71,7 +71,7 @@ Al acceder a cada opción de menú se muestra una pantalla diferente, con una op
 
     \item Desvinculación del aparato
 
-        Esta opción de menú borrará de la memoria \emph{MicroSD} la clave pública de acceso, con lo cual se quedará desvinculado el lector de nuestra cuenta de usuario en la aplicación web. Además se lanza una petición \emph{RESTful} para indicar al servidor que se quiere desvincular el lector.
+        Esta opción de menú borrará de la memoria \emph{MicroSD} la clave pública de acceso, con lo cual se quedará desvinculado el lector de la cuenta de usuario. Además se lanza una petición \emph{RESTful} para indicar al servidor que se quiere desvincular el lector.
 
         Antes de iniciar la desvinculación se muestra una pantalla de confirmación al usuario, debiendo pulsar el botón inferior para \emph{Aceptar} la opción:
 

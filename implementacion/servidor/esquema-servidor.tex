@@ -76,11 +76,19 @@ Controladores de API \emph{RESTful}
 
             Se encarga de procesar las solicitudes para manejar los frigoríficos del usuario y los productos que contienen, así como sus compras.
 
+        \item lector.php
+
+            Se encarga de procesar las solicitudes para manejar los lectores del usuario, así como la generación de códigos de barras para vincularlos a su cuenta.
+
         \item supermercado.php
 
             Se encarga de procesar las solicitudes para manejar los supermercados y los productos que contienen.
 
-        \item api.php
+        \item codigobarras.php
+
+            Permite la generación de una imagen de un código de barras.
+
+        \item rest.php
 
             Proporciona una serie de funciones accesibles desde el exterior para permitir al lector comunicarse con el servidor. Por ejemplo, añadir un producto al frigorífico del usuario.
 
@@ -146,6 +154,8 @@ private function get_password_hash($password) {
                 \item Primer código de barras
 
                     Está formado por la suma del identificador del usuario más la fecha unix actual. Se rellena con ceros a la izquierda hasta completar doce dígitos.
+
+                    Nota*: Si el código de barras empieza en cero el lector automáticamente desecha ese dígito por lo que se establece siempre el primer dígito a 1.
 
                 \item Segundo código de barras
 

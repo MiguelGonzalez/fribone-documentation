@@ -1,6 +1,6 @@
 \subsection{Problemáticas para la creación de tests unitarios}
 
-CodeIgniter viene con su propia herramienta para generar tests unitarios, la cual no nos permite su integración con \emph{Travis CI}, por ello hemos realizados una serie de modificaciones para permitir el uso de PHPUnit.
+CodeIgniter viene con su propia herramienta para generar tests unitarios, la cual no nos permite su integración con \emph{Travis CI}, por ello se han realizado una serie de modificaciones para permitir el uso de PHPUnit.
 
 Se han tenido que tocar los siguientes módulos y realizar los siguientes cambios:
 
@@ -8,7 +8,7 @@ Se han tenido que tocar los siguientes módulos y realizar los siguientes cambio
 
     \item Modificación del fichero \emph{DB\_driver.php}
 
-        Si se produce un error se llama al método display\_error, el cual lo imprime por pantalla. Para nuestros tests se ha modificado para lanzar una excepción en caso de que estemos en el entorno de testing.
+        Si se produce un error se llama al método display\_error, el cual lo imprime por pantalla. Para correr tests se ha modificado para lanzar una excepción en caso de que se esté en el entorno de testing.
 
                 \begin{lstlisting}
 if (defined('ENVIRONMENT') && ENVIRONMENT == 'testing') {
@@ -57,12 +57,12 @@ function escape_str($str, $like = FALSE) {
 
 \end{itemize}
 
-Por último, para ser capaces de lanzar nuestros tests hemos tenido que añadir las siguientes configuraciones a nuestra aplicación:
+Por último, para ser capaces de lanzar los tests se han tenido que añadir las siguientes configuraciones a la aplicación:
 
 \begin{itemize}
     \item Creación del fichero de configuración \emph{phpunit.xml}
 
-        Este fichero XML nos permite indicarle a PHPUnit los parámetros para ejecutar los tests. Consta de la siguiente configuración:
+        Este fichero XML permite indicarle a PHPUnit los parámetros para ejecutar los tests. Consta de la siguiente configuración:
 
                 \begin{lstlisting}
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -76,24 +76,66 @@ Por último, para ser capaces de lanzar nuestros tests hemos tenido que añadir 
     syntaxCheck="false"
     verbose="true">
     <testsuites>
-        <testsuite name="TestSuite">
-            <directory>application/tests</directory>
+        <testsuite name="TestUserModel">
+            <file>application/application/tests/models/UserTest.php</file>
+        </testsuite>
+        <testsuite name="TestLectorModel">
+            <file>application/application/tests/models/LectorTest.php</file>
+        </testsuite>
+        <testsuite name="TestFridgeModel">
+            <file>application/application/tests/models/FridgeTest.php</file>
+        </testsuite>
+        <testsuite name="TestSupermercadoModel">
+            <file>application/application/tests/models/SupermercadoTest.php</file>
+        </testsuite>
+        <testsuite name="TestCompraModel">
+            <file>application/application/tests/models/CompraTest.php</file>
+        </testsuite>
+        <testsuite name="TestLogin_auth">
+            <file>application/application/tests/libraries/Login_authTest.php</file>
+        </testsuite>
+        <testsuite name="TestMy_PHPMailer">
+            <file>application/application/tests/libraries/My_PHPMailerTest.php</file>
+        </testsuite>
+        <testsuite name="TestLector_library">
+            <file>application/application/tests/libraries/Lector_libraryTest.php</file>
+        </testsuite>
+        <testsuite name="TestSupermercado_library">
+            <file>application/application/tests/libraries/Supermercado_libraryTest.php</file>
+        </testsuite>
+        <testsuite name="TestFridge_library">
+            <file>application/application/tests/libraries/Fridge_libraryTest.php</file>
+        </testsuite>
+        <testsuite name="TestCompra_library">
+            <file>application/application/tests/libraries/Compra_libraryTest.php</file>
         </testsuite>
     </testsuites>
+     <filter>
+        <blacklist>
+            <directory suffix=".php">application/application/config</directory>
+            <directory suffix=".php">application/application/controllers</directory>
+            <directory suffix=".php">application/application/core</directory>
+            <directory suffix=".php">application/application/libraries/PHPMailer</directory>
+            <directory suffix=".php">application/application/tests/mockups</directory>
+            <directory suffix=".php">application/system</directory>
+            <file>application/application/tests/bootstrap.php</file>
+            <file>application/application/tests/database_inflater.php</file>
+            <file>application/application/tests/PHPTest_Unit.php</file>
+        </blacklist>
+    </filter>
     <php>
         <const name="PHPUNIT_TEST" value="1" />
         <const name="PHPUNIT_CHARSET" value="UTF-8" />
         <const name="REMOTE_ADDR" value="217.0.0.1" />
     </php>
-    <filter>
-        <blacklist>
-            <directory suffix=".php">system</directory>
-        </blacklist>
-    </filter>
+    <logging>
+        <log type="coverage-text" target="php://stdout" showUncoveredFiles="true"/>
+        <log type="coverage-clover" target="coverage/clover.xml"/>
+    </logging>
 </phpunit>
                 \end{lstlisting}
 
-        Ejecutará nuestra aplicación a partir del fichero \emph{bootstrap.php} y lanzará los tests contenidos en la carpeta \emph{application/tests}.
+        Ejecutará la aplicación a partir del fichero \emph{bootstrap.php} y lanzará los tests definidos.
 
     \item Creación del fichero \emph{bootstrap.php}
 
@@ -108,7 +150,7 @@ $system_path = '../../system';
 $application_folder = '../../application';
                 \end{lstlisting}
 
-    \item En nuestra definición de controlador global se ha añadido una condición para comprobar si estamos en modo testing. En modo testing no se carga ninguna librería y se añade en su lugar la carpeta de \emph{tests/mockups} como paquete, de esta manera se cargarán en nuestros tests de ahí aquellas librerías mockups que se añadan.
+    \item En la definición de controlador global se ha añadido una condición para comprobar si se está en modo testing. En modo testing no se carga ninguna librería y se añade en su lugar la carpeta de \emph{tests/mockups} como paquete, de esta manera se cargarán automáticamente primero las librerías que se encuentren ahí por defecto, facilitando la creación de \emph{mockups} en el entorno de test.
 
                 \begin{lstlisting}
 if (defined('ENVIRONMENT') && ENVIRONMENT == 'testing') {
